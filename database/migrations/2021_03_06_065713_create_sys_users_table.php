@@ -26,13 +26,14 @@ class CreateSysUsersTable extends Migration
             $table->string('realname')->default("")->comment("实名");
             $table->string('password')->default("")->comment("密码");
             $table->string('avatar')->default("")->comment("头像");
-            $table->integer('role_id')->default(1)->comment("角色ID");
+            $table->bigInteger('role_id')->default(1)->comment("角色ID");
             $table->timestamp('last_login_at',0)->nullable()->comment('最后登录日期');
             $table->string('last_ip')->default('')->comment('最后登录IP');
-            $table->tinyInteger('status')->default(1)->comment('状态: 1=启用 2=禁用');
+            $table->boolean('status')->default(true)->comment('状态: 1=启用 2=禁用');
             $table->timestamps();
+            $table->timestamp('deleted_at', 0)->nullable()->comment('删除时间 null未删除');
         });
-        \Illuminate\Support\Facades\DB::statement("ALTER TABLE `sys_users` comment '系统用户表'");//表注释一定加上前缀
+        \Illuminate\Support\Facades\DB::statement("ALTER TABLE `sys_users` comment '系统—用户表'");//表注释一定加上前缀
     }
 
     /**
