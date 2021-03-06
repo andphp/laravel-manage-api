@@ -32,6 +32,10 @@ class CreateSysMenusTable extends Migration
             $table->boolean('close_tab')->default(false)->comment("附加属性:");
             $table->timestamps();
             $table->timestamp('deleted_at', 0)->nullable()->comment('删除时间 null未删除');
+            $table->index('parent_id');
+            $table->index('path');
+            $table->index('name');
+            $table->index('title');
         });
         \Illuminate\Support\Facades\DB::statement("ALTER TABLE `sys_menus` comment '系统—菜单表'");//表注释一定加上前缀
     }

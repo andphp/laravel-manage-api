@@ -21,6 +21,8 @@ class CreateSysRoleMenusTable extends Migration
             $table->bigInteger('menu_id')->default(0)->comment("菜单ID");
             $table->timestamps();
             $table->timestamp('deleted_at', 0)->nullable()->comment('删除时间 null未删除');
+            $table->index('role_id');
+            $table->index('menu_id');
         });
         \Illuminate\Support\Facades\DB::statement("ALTER TABLE `sys_role_menus` comment '系统—角色菜单关联表'");//表注释一定加上前缀
     }

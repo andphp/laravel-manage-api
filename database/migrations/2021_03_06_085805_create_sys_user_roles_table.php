@@ -21,6 +21,8 @@ class CreateSysUserRolesTable extends Migration
             $table->bigInteger('role_id')->default(0)->comment("角色ID");
             $table->timestamps();
             $table->timestamp('deleted_at', 0)->nullable()->comment('删除时间 null未删除');
+            $table->index('user_id');
+            $table->index('role_id');
         });
         \Illuminate\Support\Facades\DB::statement("ALTER TABLE `sys_user_roles` comment '系统—用户角色关联表'");//表注释一定加上前缀
     }

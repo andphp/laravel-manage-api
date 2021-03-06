@@ -30,6 +30,10 @@ class CreateSysOperationRecordsTable extends Migration
             $table->bigInteger('user_id')->default(0)->comment("用户ID");
             $table->timestamps();
             $table->timestamp('deleted_at', 0)->nullable()->comment('删除时间 null未删除');
+            $table->index('ip');
+            $table->index('path');
+            $table->index('status');
+            $table->index('user_id');
         });
         \Illuminate\Support\Facades\DB::statement("ALTER TABLE `sys_operation_records` comment '系统—运行记录表'");//表注释一定加上前缀
     }

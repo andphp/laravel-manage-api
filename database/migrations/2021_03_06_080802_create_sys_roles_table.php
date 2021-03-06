@@ -22,6 +22,8 @@ class CreateSysRolesTable extends Migration
             $table->string('parent_id')->default(0)->comment("父角色ID");
             $table->string('default_router')->default("dashboard")->comment("默认菜单");
             $table->timestamps();
+            $table->index('role_name');
+            $table->index('parent_id');
         });
         \Illuminate\Support\Facades\DB::statement("ALTER TABLE `sys_roles` comment '系统—角色表'");//表注释一定加上前缀
     }

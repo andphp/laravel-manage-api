@@ -22,6 +22,8 @@ class CreateSysRoleApisTable extends Migration
             $table->bigInteger('api_id')->default(0)->comment("请求接口ID");
             $table->timestamps();
             $table->timestamp('deleted_at', 0)->nullable()->comment('删除时间 null未删除');
+            $table->index('role_id');
+            $table->index('api_id');
         });
         \Illuminate\Support\Facades\DB::statement("ALTER TABLE `sys_role_apis` comment '系统—角色请求接口关联表'");//表注释一定加上前缀
     }

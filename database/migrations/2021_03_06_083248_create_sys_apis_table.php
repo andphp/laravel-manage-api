@@ -24,6 +24,8 @@ class CreateSysApisTable extends Migration
             $table->string('method')->default("POST")->comment("请求方式");
             $table->timestamps();
             $table->timestamp('deleted_at', 0)->nullable()->comment('删除时间 null未删除');
+            $table->index('path');
+            $table->index('api_group');
         });
         \Illuminate\Support\Facades\DB::statement("ALTER TABLE `sys_apis` comment '系统—请求接口表'");//表注释一定加上前缀
     }

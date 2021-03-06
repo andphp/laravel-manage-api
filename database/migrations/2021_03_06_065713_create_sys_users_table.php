@@ -32,6 +32,10 @@ class CreateSysUsersTable extends Migration
             $table->boolean('status')->default(true)->comment('状态: 1=启用 2=禁用');
             $table->timestamps();
             $table->timestamp('deleted_at', 0)->nullable()->comment('删除时间 null未删除');
+            $table->index('uuid');
+            $table->index('email');
+            $table->index('username');
+            $table->index('nickname');
         });
         \Illuminate\Support\Facades\DB::statement("ALTER TABLE `sys_users` comment '系统—用户表'");//表注释一定加上前缀
     }
