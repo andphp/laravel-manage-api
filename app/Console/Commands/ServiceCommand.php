@@ -8,25 +8,25 @@ use Illuminate\Filesystem\Filesystem;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-class ControllerCommand extends Command
+class ServiceCommand extends Command
 {
     protected $files;
 
-    protected $type = 'ApaController';
+    protected $type = 'Service';
 
     /**
      * The name and signature of the console command. 控制台命令的名称和签名
      *
      * @var string
      */
-    protected $signature = 'make:apaController {name} {--extend=}';
+    protected $signature = 'make:service {name} {--extend=}';
 
     /**
      * The console command description. 控制台命令描述
      *
      * @var string
      */
-    protected $description = 'Create a new apaController class';
+    protected $description = 'Create a new service class';
 
     /**
      * Create a new command instance. 创建一个新的命令实例
@@ -76,7 +76,7 @@ class ControllerCommand extends Command
      */
     protected function getStub()
     {
-        $stub = $stub ?? '/stubs/controller.plain.stub';
+        $stub = $stub ?? '/stubs/service.plain.stub';
 
         return __DIR__.$stub;
     }
@@ -89,13 +89,13 @@ class ControllerCommand extends Command
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace.'\Http\Controllers';
+        return $rootNamespace.'\Http\Services';
     }
 
     /**
      * * Build the class with the given name. 使用给定的名称构建类
      *
-     * Remove the base controller import if we are already in base namespace. 如果我们已经在基命名空间中，则删除基控制器导入
+     * Remove the base service import if we are already in base namespace. 如果我们已经在基命名空间中，则删除基控制器导入
      *
      * @param $name
      * @return mixed
@@ -103,11 +103,11 @@ class ControllerCommand extends Command
      */
     protected function buildClass($name)
     {
-        $controllerNamespace = $this->getNamespace($name);
+        $serviceNamespace = $this->getNamespace($name);
 
         $replace = [];
 
-        $replace["use {$controllerNamespace}\Controller;\n"] = '';
+        $replace["use {$serviceNamespace}\Service;\n"] = '';
 
         return str_replace(
             array_keys($replace), array_values($replace), $this->buildClassParent($name)
@@ -137,7 +137,7 @@ class ControllerCommand extends Command
     protected function getOptions()
     {
         return [
-            ['extend', 'i', InputOption::VALUE_NONE, 'Generate a resource controller class.'],
+            ['extend', 'i', InputOption::VALUE_NONE, 'Generate a resource service class.'],
         ];
     }
 
@@ -258,7 +258,7 @@ class ControllerCommand extends Command
     {
         $class = str_replace($this->getNamespace($Extend).'\\', '', $Extend);
 
-        $use   = count(explode('\\', $Extend)) >= 2 ? "" : 'use ' . $this->qualifyClass($Extend)."Controller;";
+        $use   = count(explode('\\', $Extend)) >= 2 ? "" : 'use ' . $this->qualifyClass($Extend)."Service;";
 
         $stub  = str_replace(['DummyUseNamespace', 'DummyExtendClass'], [$use, $class], $stub);
         return $stub;

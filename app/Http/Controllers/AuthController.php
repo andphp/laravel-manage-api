@@ -1,14 +1,13 @@
 <?php
 
-namespace DummyNamespace;
+namespace App\Http\Controllers;
 
-DummyUseNamespace
 
-class DummyClass extends DummyExtendClassController
+class AuthController extends Controller
 {
 
     /**
-     * 列表查询
+     * Display a listing of the resource.
      */
     public function index()
     {
@@ -16,7 +15,7 @@ class DummyClass extends DummyExtendClassController
     }
 
     /**
-     * 创建新增
+     * Show the form for creating a new resource.
      */
     public function create()
     {
@@ -24,7 +23,7 @@ class DummyClass extends DummyExtendClassController
     }
 
     /**
-     * 指定ID查询
+     * Display the specified resource.
      */
     public function show()
     {
@@ -33,7 +32,7 @@ class DummyClass extends DummyExtendClassController
 
 
     /**
-     * 更新
+     * Update the specified resource in storage.
      */
     public function update()
     {
@@ -41,7 +40,7 @@ class DummyClass extends DummyExtendClassController
     }
 
     /**
-     * 删除
+     * Remove the specified resource from storage.
      */
     public function destroy()
     {
