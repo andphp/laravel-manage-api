@@ -1,0 +1,132 @@
+<?php
+
+namespace App\Exceptions;
+
+use Throwable;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Auth\AuthenticationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
+
+#use Tymon\JWTAuth\Exceptions\TokenInvalidException;
+
+
+class Report
+{
+
+
+    /**
+     * @var Throwable
+     */
+    public $exception;
+    /**
+     * @var Request
+     */
+    public $request;
+
+    /**
+     * @var
+     */
+    protected $report;
+
+    /**
+     * ExceptionReport constructor.
+     * @param Request $request
+     * @param Throwable $exception
+     */
+    function __construct(Request $request, Throwable $exception)
+    {
+        $this->request = $request;
+        $this->exception = $exception;
+    }
+
+    /**
+     * @var array
+     */
+    //当抛出这些异常时，可以使用我们定义的错误信息与HTTP状态码
+    //可以把常见异常放在这里
+    public $doReport = [
+        AuthenticationException::class       => ['未授权', 401],
+        ModelNotFoundException::class        => ['该模型未找到', 404],
+        AuthorizationException::class        => ['没有此权限', 403],
+        ValidationException::class           => ['验证失败', 402],
+        UnauthorizedHttpException::class     => ['未登录或登录状态失效', 422],
+        #TokenInvalidException::class => ['token不正确', 400],
+        NotFoundHttpException::class         => ['没有找到该页面', 404],
+        MethodNotAllowedHttpException::class => ['访问方式不正确', 405],
+        // QueryException::class => ['参数错误', 401],
+        ApiException::class                  => ['程序错误', 500],
+    ];
+
+    public function register($className, callable $callback)
+    {
+
+        $this->doReport[$className] = $callback;
+    }
+
+    /**
+     * @return bool
+     */
+    public function shouldReturn()
+    {
+        //只有请求包含是json或者ajax请求时才有效
+        //        if (! ($this->request->wantsJson() || $this->request->ajax())){
+        //
+        //            return false;
+        //        }
+
+        foreach (array_keys($this->doReport) as $report) {
+            if ($this->exception instanceof $report) {
+                $this->report = $report;
+                return true;
+            }
+        }
+        return false;
+
+    }
+
+    /**
+     * @param Throwable $e
+     * @return static
+     */
+    public static function make(Throwable $e)
+    {
+
+        return new static(\request(), $e);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function report()
+    {
+        if ($this->exception instanceof ValidationException) {
+            //            $error = array_key_first($this->exception->errors());
+            return $this->failed(current($this->exception->errors())[0], $this->exception->status, 200);
+        }
+        if ($this->exception instanceof ApiException) {
+            return $this->failed($this->exception->getMessage(), $this->exception->getCode(), $this->exception->getStatusCode());
+        }
+        $message = $this->doReport[$this->report];
+        return $this->failed($message[0], $message[1]);
+    }
+
+    public function prodReport()
+    {
+        return $this->failed('服务器错误', 500);
+    }
+
+    public function failed($message = "服务器错误", $code = Response::HTTP_BAD_REQUEST, $statusCode = 503)
+    {
+        $result = [
+            'code' => $code,
+            'msg'  => $message,
+        ];
+        return response()->json($result, $statusCode)->setEncodingOptions(JSON_UNESCAPED_UNICODE);
+    }
+}
