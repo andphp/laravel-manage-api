@@ -20,6 +20,7 @@ class CreateSysUsersTable extends Migration
             $table->id();
             $table->string('uuid')->unique()->comment("用户UUID");
             $table->string('email')->unique()->comment("邮箱");
+            $table->string('phone')->unique()->comment("手机号");
             $table->timestamp('email_verified_at')->nullable()->comment("邮箱验证时间");
             $table->string('username')->default("")->comment("用户登录名");
             $table->string('nickname')->default("")->comment("昵称");

@@ -14,6 +14,24 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     /**
+     * 默认响应头
+     * @var array
+     */
+    public static $header = [];
+
+    /**
+     * 设置返回 Header
+     * @param $key
+     * @param $values
+     * @return $this
+     */
+    public function setHeader($key, $values)
+    {
+        self::$header[$key] = $values;
+        return $this;
+    }
+
+    /**
      * 响应成功
      * @param array $data
      * @param string $message
@@ -21,7 +39,7 @@ class Controller extends BaseController
      */
     public function success($data = [], string $message = 'success')
     {
-        return Output::output($data, $message, 200, 200);
+        return $this->outJson($data, $message, 200, 200);
     }
 
     /**
@@ -40,7 +58,21 @@ class Controller extends BaseController
             $message = "failed";
         }
 
-        return Output::output([], $message, $code, 200);
+        return $this->outJson([], $message, $code, 200);
     }
 
+    public function outJson($data, $message, $code, $status)
+    {
+        // 返回json数据
+        $result = [
+            'code'    => $code,
+            'message' => $message,
+            'data'    => camelCase($data),
+        ];
+        $headerKey = base64_decode('WC1Qb3dlcmVkLUJ5');
+        $headerValue = base64_decode('QW5kUEhQ');
+        self::$header[$headerKey] = $headerValue;
+        //todo 断言 format 输出不同类型
+        return response()->json($result, $status)->withHeaders(self::$header)->setEncodingOptions(JSON_UNESCAPED_UNICODE);
+    }
 }
