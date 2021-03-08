@@ -20,7 +20,7 @@ class CreateSysUsersTable extends Migration
             $table->id();
             $table->string('uuid')->unique()->comment("用户UUID");
             $table->string('email')->unique()->comment("邮箱");
-            $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('email_verified_at')->nullable()->comment("邮箱验证时间");
             $table->string('username')->default("")->comment("用户登录名");
             $table->string('nickname')->default("")->comment("昵称");
             $table->string('realname')->default("")->comment("实名");
@@ -29,7 +29,7 @@ class CreateSysUsersTable extends Migration
             $table->bigInteger('role_id')->default(1)->comment("角色ID");
             $table->timestamp('last_login_at',0)->nullable()->comment('最后登录日期');
             $table->string('last_ip')->default('')->comment('最后登录IP');
-            $table->boolean('status')->default(true)->comment('状态: 1=启用 2=禁用');
+            $table->boolean('status')->default(true)->comment('状态: 1=启用 0=禁用');
             $table->timestamps();
             $table->timestamp('deleted_at', 0)->nullable()->comment('删除时间 null未删除');
             $table->index('uuid');

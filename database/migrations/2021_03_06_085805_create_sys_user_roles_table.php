@@ -19,8 +19,6 @@ class CreateSysUserRolesTable extends Migration
             $table->collation = 'utf8mb4_unicode_ci';
             $table->bigInteger('user_id')->default(0)->comment("用户ID");
             $table->bigInteger('role_id')->default(0)->comment("角色ID");
-            $table->timestamps();
-            $table->timestamp('deleted_at', 0)->nullable()->comment('删除时间 null未删除');
             $table->index('user_id');
             $table->index('role_id');
         });
