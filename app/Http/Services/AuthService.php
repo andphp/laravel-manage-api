@@ -4,6 +4,7 @@ namespace App\Http\Services;
 
 
 use App\Constant\Error;
+use App\Exceptions\ApiException;
 use App\Librarys\Jwt\Token;
 use App\Models\SysUser;
 use Illuminate\Support\Facades\DB;

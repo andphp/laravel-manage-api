@@ -71,7 +71,7 @@ trait OutPut
         // 返回json数据
         $result = [
             'code'    => $code,
-            'message' => $message,
+            'msg' => $message,
             'data'    => camelCase($data),
         ];
         $headerKey = base64_decode('WC1Qb3dlcmVkLUJ5');
