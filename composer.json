@@ -13,8 +13,10 @@
         "firebase/php-jwt": "^5.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "laravel-lang/lang": "~8.0",
         "laravel/framework": "^8.12",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "overtrue/laravel-lang": "~3.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -41,9 +43,9 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "classmap": [
-            "app/Helpers"
         ],
         "files": [
+            "app/Helpers/DataConversion.php"
         ]
     },
     "autoload-dev": {

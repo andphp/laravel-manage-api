@@ -4,20 +4,28 @@
 namespace App\Constant;
 
 
-class Status extends BaseConstant
+class Status
 {
-    public function __init()
-    {
-        $this->class = __CLASS__;
-    }
+    // ============================ 返回code默认状态码 =====================
+    /**
+     * 成功响应
+     */
+    const SUCCESS = 200;
+
+    /**
+     * 失败响应
+     */
+    const ERROR = 999;
+
     /**
      * 状态：开
      */
     const ON = 1;
+
     /**
      * 状态：关
      */
-    const OFF = 2;
+    const OFF = 0;
 
     // ============================ 任务状态 =====================
     /**

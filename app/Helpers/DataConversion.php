@@ -38,3 +38,20 @@ if (!function_exists('convertUnderline')) {
         return $ucfirst ? ucfirst($str) : $str;
     }
 }
+
+
+if (!function_exists('randomStr')) {
+    /**
+     * 生成随机字符串
+     * @return string
+     */
+    function randomStr($len = 6)
+    {
+        $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        $str = "";
+        for ($i = 0; $i < $len; $i++) {
+            $str .= substr($chars, mt_rand(0, strlen($chars) - 1), 1);
+        }
+        return $str;
+    }
+}

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 /**
  * @property int id
@@ -27,7 +28,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class SysUser extends Model
 {
     use SoftDeletes;
-    protected $table = 'sys_user';
+    protected $table = 'sys_users';
 
     protected $fillable = [
         'uuid',
@@ -47,4 +48,12 @@ class SysUser extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    public static function boot()
+    {
+        parent::boot();
+        static::creating(function ($model) {
+            $model->uuid = (string)Str::uuid();
+        });
+    }
 }

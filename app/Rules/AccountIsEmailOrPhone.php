@@ -3,6 +3,7 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Support\Facades\Lang;
 
 class AccountIsEmailOrPhone implements Rule
 {
@@ -35,6 +36,6 @@ class AccountIsEmailOrPhone implements Rule
      */
     public function message()
     {
-        return 'The incorrect account format.';
+        return Lang::get('validation.email_or_phone');
     }
 }

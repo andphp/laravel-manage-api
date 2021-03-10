@@ -18,7 +18,7 @@ Route::group([
     'namespace' => 'V1',
     'prefix' => 'v1/',
 ], function () {
-    Route::post('login', 'AuthController@login'); // 提交登录
+    Route::post('sign_in', [\App\Http\Controllers\V1\AuthController::class,'signIn']); // 提交登录
 
 
 });

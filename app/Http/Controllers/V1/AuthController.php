@@ -4,9 +4,12 @@ namespace App\Http\Controllers\V1;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\SysUserInfo;
+use App\Http\Services\AuthService;
 use App\Models\SysUser;
 use App\Rules\AccountIsEmailOrPhone;
 use Illuminate\Http\Request;
+use function MongoDB\BSON\toJSON;
 
 class AuthController extends Controller
 {
@@ -15,18 +18,23 @@ class AuthController extends Controller
      * 登录
      * @param Request $request
      */
-    public function login(Request $request)
+    public function signIn(Request $request)
     {
+
+        // 参数验证
         $validatedData = $request->validate([
             'account'   => ['required', new AccountIsEmailOrPhone()],
             'password' => ['required', "between:6,18"],
+        ],[],[
+            'account' => '登录账号'
         ]);
-        $account = $validatedData['account'];
-        $password = $validatedData['password'];
-
         // 登录
+        [$res,$err]= AuthService::login($validatedData);
+        if($err){
+            return $this->error($err);
+        }
 
-        return $this->success();
+        return new SysUserInfo($res);
     }
     /**
      * Display a listing of the resource.
