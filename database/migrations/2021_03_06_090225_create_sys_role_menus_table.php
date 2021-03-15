@@ -19,6 +19,7 @@ class CreateSysRoleMenusTable extends Migration
             $table->collation = 'utf8mb4_unicode_ci';
             $table->bigInteger('role_id')->default(0)->comment("角色ID");
             $table->bigInteger('menu_id')->default(0)->comment("菜单ID");
+            $table->string('ability')->default("")->comment('权限：序列化["READ","WRITE","DELETE"]');
             $table->index('role_id');
             $table->index('menu_id');
         });

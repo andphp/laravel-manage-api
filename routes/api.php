@@ -20,5 +20,18 @@ Route::group([
 ], function () {
     Route::post('sign_in', [\App\Http\Controllers\V1\AuthController::class,'signIn']); // 提交登录
 
-
+    /**
+     * 登录验证路由:
+     */
+    Route::group(['middleware' => App\Http\Middleware\Authenticate::class], function () {
+        /**
+         * |--------------------------------------------------------------------------
+         * | 角色 相关的路由
+         * |--------------------------------------------------------------------------
+         */
+        Route::group(['prefix' => 'role'], function () {
+            Route::post('list', [\App\Http\Controllers\V1\RoleController::class,'list']); // 获取 角色列表
+            Route::post('create', [\App\Http\Controllers\V1\RoleController::class,'create']); // 创建 角色
+        });
+    });
 });

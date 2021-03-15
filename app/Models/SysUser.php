@@ -56,4 +56,9 @@ class SysUser extends Model
             $model->uuid = (string)Str::uuid();
         });
     }
+
+    public function getUserInfo($id)
+    {
+        return self::find($id);
+    }
 }

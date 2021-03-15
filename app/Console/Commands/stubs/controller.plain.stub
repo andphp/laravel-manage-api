@@ -10,7 +10,7 @@ class DummyClass extends DummyExtendClassController
     /**
      * 列表查询
      */
-    public function index()
+    public function list()
     {
         //
     }
