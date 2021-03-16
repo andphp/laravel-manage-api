@@ -4,6 +4,7 @@ namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
 use App\Models\SysRole;
+use App\Models\SysUser;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 
@@ -15,7 +16,7 @@ class RoleController extends Controller
      */
     public function list()
     {
-        return SysRole::query()->get();
+        return $this->success(SysRole::query()->get()->toArray());
     }
 
     /**
@@ -44,7 +45,8 @@ class RoleController extends Controller
      */
     public function show()
     {
-        //
+        $model = SysUser::query()->find(2);
+        $model->nickname;
     }
 
 

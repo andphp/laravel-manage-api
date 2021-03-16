@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 
 /**
+ * Class SysUser
+ * @package App\Models
  * @property int id
  * @property string uuid	用户UUID
  * @property string email	邮箱

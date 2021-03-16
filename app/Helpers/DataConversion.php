@@ -18,7 +18,7 @@ if (!function_exists('camelCase')) {
         }
         if (is_array($arr)) {
             foreach ($arr as $key => $value) {
-                $key1 = convertUnderline($key, FALSE);
+                $key1 = toCamelCase($key, FALSE);
                 $value1 = camelCase($value);
                 $temp[$key1] = $value1;
             }
@@ -30,8 +30,8 @@ if (!function_exists('camelCase')) {
 /**
  * 将下划线命名转换为驼峰式命名
  */
-if (!function_exists('convertUnderline')) {
-    function convertUnderline($str, $ucfirst = true)
+if (!function_exists('toCamelCase')) {
+    function toCamelCase($str, $ucfirst = true)
     {
         $str = ucwords(str_replace('_', ' ', $str));
         $str = str_replace(' ', '', lcfirst($str));
@@ -39,6 +39,19 @@ if (!function_exists('convertUnderline')) {
     }
 }
 
+/**
+ * 驼峰命名转下划线命名
+ */
+if (!function_exists('toUnderScore')) {
+    function toUnderScore($str)
+    {
+        $dstr = preg_replace_callback('/([A-Z]+)/',function($matchs)
+        {
+            return '_'.strtolower($matchs[0]);
+        },$str);
+        return trim(preg_replace('/_{2,}/','_',$dstr),'_');
+    }
+}
 
 if (!function_exists('randomStr')) {
     /**
