@@ -16,6 +16,7 @@ class RoleController extends Controller
      */
     public function list()
     {
+
         return $this->success(SysRole::query()->get()->toArray());
     }
 
