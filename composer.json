@@ -45,7 +45,10 @@
         "classmap": [
         ],
         "files": [
-            "app/Helpers/DataConversion.php"
+            "app/Helpers/DataConversion.php",
+            "app/Helpers/Encrypter.php",
+            "app/Helpers/FileScan.php",
+            "app/Helpers/Hero.php"
         ]
     },
     "autoload-dev": {

@@ -1,0 +1,1367 @@
+{
+	"info": {
+		"_postman_id": "0bff4fcb-1ed4-408d-ae21-67b2f2eba794",
+		"name": "iot-beta",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "单元管理[缴费管理]列表",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIiLCJzdWIiOiIiLCJhdWQiOiIiLCJpYXQiOjE2MDc0MzE5NjcsIm5iZiI6MTYwNzQzMTk2Nywic2NvcGVzIjoiYWNjZXNzX3Rva2VuIiwiZXhwIjoxNjA3NDM5MTY3LCJkYXRhIjp7ImNsaWVudF9pZCI6MSwiZ3JvdXBfaWQiOjEsImNsaWVudF90eXBlIjoxLCJwbGF0Zm9ybSI6IiIsInVzZXJuYW1lIjoiYWRtaW4ifX0.gooTqTw5I5cpMYTvqv65yWHVVVrPjSu3TZWfllRLB90",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "version",
+							"value": "v1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "method",
+							"value": "signUp.admin.login",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "platform",
+							"value": "ios3443",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "format",
+							"value": "json",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "newiot.test/api/agent/v1/service/payment/list?search=李",
+					"host": [
+						"newiot",
+						"test"
+					],
+					"path": [
+						"api",
+						"agent",
+						"v1",
+						"service",
+						"payment",
+						"list"
+					],
+					"query": [
+						{
+							"key": "pay_status",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "useage",
+							"value": "出租",
+							"disabled": true
+						},
+						{
+							"key": "start_time",
+							"value": "2020-12-08",
+							"disabled": true
+						},
+						{
+							"key": "search",
+							"value": "李"
+						}
+					]
+				},
+				"description": "单元管理[缴费管理]列表"
+			},
+			"response": []
+		},
+		{
+			"name": "获取社区下所有楼栋",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIiLCJzdWIiOiIiLCJhdWQiOiIiLCJpYXQiOjE2MTU4NjM3NTQsIm5iZiI6MTYxNTg2Mzc1NCwic2NvcGVzIjoiYWNjZXNzX3Rva2VuIiwiZXhwIjoxNjE2NDY4NTU0LCJkYXRhIjp7ImhvdXNlX2lkIjoyMDczMywiY29tbXVuaXR5X2lkIjoxMSwiYnVpbGRpbmdfaWQiOjIwLCJ1c2VyX2lkIjozMzI1LCJvd25lcl9waG9uZSI6IjEzOTgzODU0NTEyIn19.wMxiej8LziFDW1mDns8vvjdi8Vg5sM5gkm779HxoQLI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIiLCJzdWIiOiIiLCJhdWQiOiIiLCJpYXQiOjE2MDc0MzE5NjcsIm5iZiI6MTYwNzQzMTk2Nywic2NvcGVzIjoiYWNjZXNzX3Rva2VuIiwiZXhwIjoxNjA3NDM5MTY3LCJkYXRhIjp7ImNsaWVudF9pZCI6MSwiZ3JvdXBfaWQiOjEsImNsaWVudF90eXBlIjoxLCJwbGF0Zm9ybSI6IiIsInVzZXJuYW1lIjoiYWRtaW4ifX0.gooTqTw5I5cpMYTvqv65yWHVVVrPjSu3TZWfllRLB90",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "version",
+							"value": "v1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "method",
+							"value": "signUp.admin.login",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "platform",
+							"value": "ios3443",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "format",
+							"value": "json",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "community_building_id",
+							"value": "17",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "building_id",
+							"value": "89",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "gate_number",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "id",
+							"value": "49",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "MM",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "ownership_id",
+							"value": "6",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "elevator",
+							"value": "0",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "construction_time",
+							"value": "2020-11-06 00:00:00",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "remark",
+							"value": "sd",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "otherfee_type_id",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "phone",
+							"value": "13983854512",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "code",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "building_id",
+							"value": "90",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "gate_number",
+							"value": "310",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "month",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "api_token",
+							"value": "sdfsdf",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "type",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "start_time",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "number",
+							"value": "33",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "ownership_id",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "floor",
+							"value": "3",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "building_id",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "floor_number",
+							"value": "8",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "house_number",
+							"value": "4",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "filter_number",
+							"value": "2,4",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "prefix",
+							"value": "-",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "suffix",
+							"value": "m",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "house_ids",
+							"value": "59,60",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "useage",
+							"value": "资质",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "is_deleted",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "house_id",
+							"value": "59",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/DaXiong/Desktop/8790b7a2e6693724762d02a24472d547.jpeg",
+							"disabled": true
+						},
+						{
+							"key": "search",
+							"value": "雄",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "realname",
+							"value": "高雄",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "id_card",
+							"value": "544354645645",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "house_info[0][building_id]",
+							"value": "3",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "house_info[0][house_id]",
+							"value": "21",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "house_info[0][role]",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "user_id",
+							"value": "922",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "house_info[0][id]",
+							"value": "5",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "house_info[1][building_id]",
+							"value": "90",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "house_info[1][house_id]",
+							"value": "113",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "house_info[1][role]",
+							"value": "3",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "del_house[0]",
+							"value": "5",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "del_house[1]",
+							"value": "3",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "building_id",
+							"value": "49",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "check_status",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "id",
+							"value": "47",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "status",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/DaXiong/Desktop/1234.jpeg",
+							"disabled": true
+						},
+						{
+							"key": "lng",
+							"value": "106.55073",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "lat",
+							"value": "29.56471",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "img_face",
+							"value": "face/file_bb7ecd2ec999456e8c641437d5cd647d.jpg",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "sex",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "id_card",
+							"value": "500234199601223175",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/DaXiong/Desktop/临湘数据/2#1.xlsx",
+							"disabled": true
+						},
+						{
+							"key": "building_id",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "floor_number",
+							"value": "20",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "house_number",
+							"value": "20",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "api_token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIiLCJzdWIiOiIiLCJhdWQiOiIiLCJpYXQiOjE2MTE4ODc4NzYsIm5iZiI6MTYxMTg4Nzg3Niwic2NvcGVzIjoiYWNjZXNzX3Rva2VuIiwiZXhwIjoxNjEyNDkyNjc2LCJkYXRhIjp7ImlkIjo5MjIsInVzZXJfbmFtZSI6Ilx1OWFkOFx1OTZjNCIsInBob25lIjoiMTM5ODM4NTQ1MTIiLCJjb21tdW5pdHlfaWQiOjEwfX0.xme49Oeaz33SWn6P7wjbHutofbo9yZqDkkWbTgtf80k",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "house_id",
+							"value": "333",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "builtup_area",
+							"value": "22.443",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/DaXiong/Desktop/巡更.csv",
+							"disabled": true
+						},
+						{
+							"key": "search",
+							"value": "陈",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "pay_status",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "search",
+							"value": "高",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "house_id",
+							"value": "16",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "status",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "start_time",
+							"value": "2021/1/18",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "end_time",
+							"value": "2021-01-18 17:47:00",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "realname",
+							"value": "测试没手机",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "phone",
+							"value": "13983854512",
+							"type": "text"
+						},
+						{
+							"key": "fee_type",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "pricing_type",
+							"value": "3",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "fee_name",
+							"value": "测试收费项目",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "pricing_unit",
+							"value": "3",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "late_fee",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "price",
+							"value": "22",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "instrument_type",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "search",
+							"value": "13983854512",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "pricing_rules[0][max]",
+							"value": "33w",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "pricing_rules[0][price]",
+							"value": "322a",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "fee_code",
+							"value": "202101281120233296",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "fee_project_id",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "rule_name",
+							"value": "ad收费",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "fee_project_id",
+							"value": "1,2,3",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "remarks",
+							"value": "备注规则s",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "fee_rule_id",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "search",
+							"value": "a",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "building_id",
+							"value": "3",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "house_id",
+							"value": "13",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "fee_rule_id",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "instrument_type",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "month",
+							"value": "202012",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "last_number",
+							"value": "0",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "this_number",
+							"value": "1223",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "reader",
+							"value": "大大s",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "fee_project_id",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "pay_type",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "payee",
+							"value": "大大是",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "otherfee_type_id",
+							"value": "3",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "pay_status",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "fee_type",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "month_start",
+							"value": "2020-02",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "month_end",
+							"value": "2021-04",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "bill_details_id",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "ids",
+							"value": "4,5",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "amount_actually_received",
+							"value": "443",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "pay_type",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "advance_deposit_id",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "api_token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIiLCJzdWIiOiIiLCJhdWQiOiIiLCJpYXQiOjE2MTU1Mzg5ODQsIm5iZiI6MTYxNTUzODk4NCwic2NvcGVzIjoiYWNjZXNzX3Rva2VuIiwiZXhwIjoxNjE2MTQzNzg0LCJkYXRhIjp7ImlkIjo5MjIsInVzZXJfbmFtZSI6Ilx1OWFkOFx1OTZjNCIsInBob25lIjoiMTM5ODM4NTQ1MTIiLCJjb21tdW5pdHlfaWQiOjcsImRlcGFydG1lbnRfaWQiOm51bGx9fQ.JIjIRiYDL_hdC54yePv7Mk4eYiEdvbUK7mFI1muE_2s",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "title",
+							"value": "titledd",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "department_id",
+							"value": "5",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "type",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "content",
+							"value": "sdfsdfsdd",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "ids",
+							"value": "12",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://newiot.test/api/front/v2/login/post",
+					"protocol": "http",
+					"host": [
+						"newiot",
+						"test"
+					],
+					"path": [
+						"api",
+						"front",
+						"v2",
+						"login",
+						"post"
+					],
+					"query": [
+						{
+							"key": "useage",
+							"value": "出租",
+							"disabled": true
+						},
+						{
+							"key": "start_time",
+							"value": "2020-12-08",
+							"disabled": true
+						}
+					]
+				},
+				"description": "获取社区下所有楼栋"
+			},
+			"response": []
+		},
+		{
+			"name": "获取所有收费类目",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIiLCJzdWIiOiIiLCJhdWQiOiIiLCJpYXQiOjE2MDc0MzE5NjcsIm5iZiI6MTYwNzQzMTk2Nywic2NvcGVzIjoiYWNjZXNzX3Rva2VuIiwiZXhwIjoxNjA3NDM5MTY3LCJkYXRhIjp7ImNsaWVudF9pZCI6MSwiZ3JvdXBfaWQiOjEsImNsaWVudF90eXBlIjoxLCJwbGF0Zm9ybSI6IiIsInVzZXJuYW1lIjoiYWRtaW4ifX0.gooTqTw5I5cpMYTvqv65yWHVVVrPjSu3TZWfllRLB90",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "version",
+							"value": "v1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "method",
+							"value": "signUp.admin.login",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "platform",
+							"value": "ios3443",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "format",
+							"value": "json",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "newiot.test/api/agent/v1/service/charge/list",
+					"host": [
+						"newiot",
+						"test"
+					],
+					"path": [
+						"api",
+						"agent",
+						"v1",
+						"service",
+						"charge",
+						"list"
+					],
+					"query": [
+						{
+							"key": "pay_status",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "useage",
+							"value": "出租",
+							"disabled": true
+						},
+						{
+							"key": "start_time",
+							"value": "2020-12-08",
+							"disabled": true
+						}
+					]
+				},
+				"description": "获取所有收费类目"
+			},
+			"response": []
+		},
+		{
+			"name": "更新物业费到期时间",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIiLCJzdWIiOiIiLCJhdWQiOiIiLCJpYXQiOjE2MDc0MzE5NjcsIm5iZiI6MTYwNzQzMTk2Nywic2NvcGVzIjoiYWNjZXNzX3Rva2VuIiwiZXhwIjoxNjA3NDM5MTY3LCJkYXRhIjp7ImNsaWVudF9pZCI6MSwiZ3JvdXBfaWQiOjEsImNsaWVudF90eXBlIjoxLCJwbGF0Zm9ybSI6IiIsInVzZXJuYW1lIjoiYWRtaW4ifX0.gooTqTw5I5cpMYTvqv65yWHVVVrPjSu3TZWfllRLB90",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "version",
+							"value": "v1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "method",
+							"value": "signUp.admin.login",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "platform",
+							"value": "ios3443",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "format",
+							"value": "json",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "newiot.test/api/agent/v1/service/payment/update?id=183&property_unit=12&property_endtime=2020-12-16",
+					"host": [
+						"newiot",
+						"test"
+					],
+					"path": [
+						"api",
+						"agent",
+						"v1",
+						"service",
+						"payment",
+						"update"
+					],
+					"query": [
+						{
+							"key": "pay_status",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "useage",
+							"value": "出租",
+							"disabled": true
+						},
+						{
+							"key": "start_time",
+							"value": "2020-12-08",
+							"disabled": true
+						},
+						{
+							"key": "id",
+							"value": "183"
+						},
+						{
+							"key": "property_unit",
+							"value": "12"
+						},
+						{
+							"key": "property_endtime",
+							"value": "2020-12-16"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ajax获取业主和水电费缴费信息",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "otherfee_type_id",
+							"value": "13",
+							"type": "text"
+						},
+						{
+							"key": "gate_number",
+							"value": "1011",
+							"type": "text"
+						},
+						{
+							"key": "building_id",
+							"value": "102",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "newiot.test/api/agent/v1/service/payment/ajax_otherfee_type",
+					"host": [
+						"newiot",
+						"test"
+					],
+					"path": [
+						"api",
+						"agent",
+						"v1",
+						"service",
+						"payment",
+						"ajax_otherfee_type"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "水电费 缴费",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "otherfee_type_id",
+							"value": "13",
+							"type": "text"
+						},
+						{
+							"key": "gate_number",
+							"value": "1011",
+							"type": "text"
+						},
+						{
+							"key": "building_id",
+							"value": "102",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "pay_receive",
+							"value": "222.77",
+							"type": "text"
+						},
+						{
+							"key": "pay_true",
+							"value": "222",
+							"type": "text"
+						},
+						{
+							"key": "expiration_date",
+							"value": "2020-11-22",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "end_code",
+							"value": "3433",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "issue_balance",
+							"value": "3",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "newiot.test/api/agent/v1/service/payment/set_in_fee",
+					"host": [
+						"newiot",
+						"test"
+					],
+					"path": [
+						"api",
+						"agent",
+						"v1",
+						"service",
+						"payment",
+						"set_in_fee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "设置物业费预警到期时间",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "otherfee_type_id",
+							"value": "13",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "gate_number",
+							"value": "1011",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "building_id",
+							"value": "102",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "type",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "pay_receive",
+							"value": "222.77",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "pay_true",
+							"value": "222",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "expiration_date",
+							"value": "2020-11-22",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "end_code",
+							"value": "3433",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "issue_balance",
+							"value": "3",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "number",
+							"value": "4434",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "newiot.test/api/agent/v1/service/payment/property_warning",
+					"host": [
+						"newiot",
+						"test"
+					],
+					"path": [
+						"api",
+						"agent",
+						"v1",
+						"service",
+						"payment",
+						"property_warning"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "获取停车场所有列表",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://newiot.test/api/agent/v1/service/garage/list",
+					"protocol": "http",
+					"host": [
+						"newiot",
+						"test"
+					],
+					"path": [
+						"api",
+						"agent",
+						"v1",
+						"service",
+						"garage",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "人员列表",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://newiot.test/api/agent/v1/community/user/list?size=3",
+					"protocol": "http",
+					"host": [
+						"newiot",
+						"test"
+					],
+					"path": [
+						"api",
+						"agent",
+						"v1",
+						"community",
+						"user",
+						"list"
+					],
+					"query": [
+						{
+							"key": "size",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

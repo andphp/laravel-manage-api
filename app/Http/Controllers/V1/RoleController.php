@@ -17,11 +17,12 @@ class RoleController extends Controller
     public function list()
     {
 
-        return $this->success(SysRole::query()->get()->toArray());
+        return $this->success((SysRole::query()->get())->makeHidden(['created_at','updated_at'])->toArray());
     }
 
     /**
      * 创建新增
+     * linetype int(4) YES 1寄卖人2 邀请
      */
     public function create(Request $request)
     {
