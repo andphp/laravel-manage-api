@@ -1423,7 +1423,7 @@ table thead {
 table th,
 table td {
   padding: 0.3rem 0.6rem;
-  border: 1px solid var(--light-grey);
+  border: 1px solid #eee;
   vertical-align: middle;
 }
 *::selection {
@@ -1831,7 +1831,7 @@ blockquote footer cite:before {
   height: 0.5rem;
   border: 0.25rem solid #49b1f5;
   border-radius: 0.5rem;
-  background: var(--card-bg);
+  background: #fff;
   content: '';
   line-height: 0.5rem;
   -webkit-transition: all 0.2s ease-in-out;
@@ -1881,7 +1881,7 @@ blockquote footer cite:before {
   height: 0.3rem;
   border: 0.15rem solid #49b1f5;
   border-radius: 0.3rem;
-  background: var(--card-bg);
+  background: #fff;
   content: '';
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
@@ -2065,7 +2065,7 @@ blockquote footer cite:before {
   -ms-flex-item-align: start;
   padding: 50px 40px;
   border-radius: 8px;
-  background: var(--card-bg);
+  background: #fff;
   -webkit-box-shadow: 0 4px 8px 6px rgba(7,17,27,0.06);
   box-shadow: 0 4px 8px 6px rgba(7,17,27,0.06);
 }
@@ -2226,7 +2226,7 @@ blockquote footer cite:before {
   align-items: center;
   height: 20em;
   border-radius: 12px 8px 8px 12px;
-  background: var(--card-bg);
+  background: #fff;
   -webkit-box-shadow: 0 4px 8px 6px rgba(7,17,27,0.06);
   box-shadow: 0 4px 8px 6px rgba(7,17,27,0.06);
   -webkit-transition: all 0.3s;
@@ -2462,7 +2462,7 @@ blockquote footer cite:before {
   margin: 0 1rem;
   height: 18rem;
   border-radius: 8px;
-  background: var(--card-bg);
+  background: #fff;
   -webkit-box-shadow: 0 4px 8px 6px rgba(7,17,27,0.06);
   box-shadow: 0 4px 8px 6px rgba(7,17,27,0.06);
 }
@@ -2584,7 +2584,7 @@ blockquote footer cite:before {
   overflow: hidden;
   margin-top: 1rem;
   border-radius: 8px;
-  background: var(--card-bg);
+  background: #fff;
   -webkit-box-shadow: 0 4px 8px 6px rgba(7,17,27,0.06);
   box-shadow: 0 4px 8px 6px rgba(7,17,27,0.06);
   -webkit-transition: all 0.3s;
@@ -3174,11 +3174,11 @@ blockquote footer cite:before {
 #footer-wrap {
   position: relative;
   padding: 2rem 1rem;
-  color: var(--light-grey);
+  color: #eee;
   text-align: center;
 }
 #footer-wrap a {
-  color: var(--light-grey);
+  color: #eee;
 }
 #footer-wrap a:hover {
   text-decoration: underline;
@@ -3224,7 +3224,7 @@ blockquote footer cite:before {
 }
 #page-header #site-title {
   margin: 0;
-  color: var(--white);
+  color: #fff;
   font-size: 1.85em;
 }
 @media screen and (min-width: 768px) {
@@ -3233,7 +3233,7 @@ blockquote footer cite:before {
   }
 }
 #page-header #site-subtitle {
-  color: var(--light-grey);
+  color: #eee;
   font-size: 1.15em;
 }
 @media screen and (min-width: 768px) {
@@ -3254,7 +3254,7 @@ blockquote footer cite:before {
 }
 #page-header #site_social_icons .social-icon {
   margin: 0 0.5rem;
-  color: var(--light-grey);
+  color: #eee;
   text-shadow: 0.1rem 0.1rem 0.2rem rgba(0,0,0,0.15);
   font-size: 1.43em;
   cursor: pointer;
@@ -3268,7 +3268,7 @@ blockquote footer cite:before {
 #page-header #scroll-down .scroll-down-effects {
   position: relative;
   width: 100%;
-  color: var(--light-grey);
+  color: #eee;
   font-size: 30px;
 }
 #page-header.not-index-bg {
@@ -3291,11 +3291,11 @@ blockquote footer cite:before {
   }
 }
 #page-header.post-bg {
-  height: 10rem;
+  height: 20rem;
 }
 @media screen and (max-width: 768px) {
   #page-header.post-bg {
-    height: 9rem;
+    height: 18rem;
   }
 }
 #page-header.post-bg:before {
@@ -3324,8 +3324,7 @@ blockquote footer cite:before {
 }
 #page-header #post-info {
   position: absolute;
-  /*bottom: 5rem;*/
-  top: 50px;
+  bottom: 5rem;
   padding: 0 8%;
   width: 100%;
   text-align: center;
@@ -3346,7 +3345,7 @@ blockquote footer cite:before {
   margin-bottom: 0.4rem;
   font-size: 2.5em;
   font-weight: normal;
-  color: var(--white);
+  color: #fff;
   line-height: 1.5;
   -webkit-line-clamp: 3;
 }
@@ -3356,7 +3355,7 @@ blockquote footer cite:before {
   }
 }
 #post-info #post-meta {
-  color: var(--light-grey);
+  color: #eee;
   font-size: 95%;
 }
 @media screen and (min-width: 768px) {
@@ -3383,7 +3382,7 @@ blockquote footer cite:before {
   margin-right: 0.2rem;
 }
 #post-info #post-meta a {
-  color: var(--light-grey);
+  color: #eee;
   -webkit-transition: all 0.3s ease-out;
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
@@ -3399,7 +3398,7 @@ blockquote footer cite:before {
 }
 #post > #post-info .post-title {
   padding-bottom: 0.2rem;
-  border-bottom: 1px solid var(--light-grey);
+  border-bottom: 1px solid #eee;
   color: var(--text-highlight-color);
 }
 [data-theme='light'] #post #post-info #post-meta,
@@ -3474,13 +3473,13 @@ _:future,
   vertical-align: top;
 }
 #nav #toggle-menu:hover {
-  color: var(--white);
+  color: #fff;
 }
 #nav a {
-  color: var(--light-grey);
+  color: #eee;
 }
 #nav a:hover {
-  color: var(--white);
+  color: #fff;
 }
 #nav.fixed {
   position: fixed;
@@ -4044,7 +4043,7 @@ _:future,
 }
 #pagination .page-number.current {
   background: #00c4b6;
-  color: var(--white);
+  color: #fff;
   cursor: default;
 }
 #pagination img.prev-cover,
@@ -4075,7 +4074,7 @@ _:future,
 }
 #pagination .prev_info,
 #pagination .next_info {
-  color: var(--white);
+  color: #fff;
   font-weight: 500;
 }
 #pagination .next-post .pagination-info {
@@ -4086,7 +4085,7 @@ _:future,
 }
 #pagination .prev-post .label,
 #pagination .next-post .label {
-  color: var(--light-grey);
+  color: #eee;
   text-transform: uppercase;
   font-size: 90%;
 }
@@ -4389,7 +4388,7 @@ _:future,
 }
 #post .tag_share .post-meta__tags:hover {
   background: #49b1f5;
-  color: var(--white);
+  color: #fff;
 }
 #post .tag_share .post_share {
   display: inline-block;
@@ -4411,7 +4410,7 @@ _:future,
   position: relative;
   margin: 2rem 0 0.5rem;
   padding: 0.5rem 0.8rem;
-  border: 1px solid var(--light-grey);
+  border: 1px solid #eee;
   -webkit-transition: box-shadow 0.3s ease-in-out;
   -moz-transition: box-shadow 0.3s ease-in-out;
   -o-transition: box-shadow 0.3s ease-in-out;
@@ -4435,7 +4434,7 @@ _:future,
   width: 0.4rem;
   height: 0.4rem;
   border-radius: 0.4rem;
-  background: var(--card-bg);
+  background: #fff;
   content: '';
 }
 #post .post-copyright:hover {
@@ -4543,11 +4542,11 @@ _:future,
   transform: translate(0, -50%);
 }
 .relatedPosts > .relatedPosts-list .content .date {
-  color: var(--light-grey);
+  color: #eee;
   font-size: 90%;
 }
 .relatedPosts > .relatedPosts-list .content .title {
-  color: var(--white);
+  color: #fff;
   -webkit-line-clamp: 2;
 }
 .post-reward {
@@ -5215,7 +5214,7 @@ blockquote.pullquote.right {
   display: inline-block;
   padding: 0.3rem 1rem;
   background: #49b1f5;
-  color: var(--white);
+  color: #fff;
 }
 .hide-inline > .hide-button.open,
 .hide-block > .hide-button.open {
