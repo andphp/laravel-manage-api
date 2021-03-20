@@ -76,7 +76,7 @@ class ServiceCommand extends Command
      */
     protected function getStub()
     {
-        $stub = $stub ?? '/stubs/service.plain.stub';
+        $stub = $stub ?? '/Stubs/service.plain.stub';
 
         return __DIR__.$stub;
     }

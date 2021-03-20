@@ -1,23 +1,867 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="theme-color" content="#ffffff">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="author" content="Da Xiong">
+    <meta name="copyright" content="Da Xiong">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>AndPHP api docs</title>
-    <script src="/static/highlight/highlight.pack.js"></script>
-    <link rel="stylesheet" href="/static/highlight/styles/github.css">
-    <link rel="stylesheet" href="/static/github-markdown.css">
-    <style>
-        .markdown-body {
-            min-width: 200px;
-            max-width: 790px;
-            margin: 0 auto;
-            padding: 30px;
+
+
+    <link rel="stylesheet" href="/static/apa/docs/detail/index.css">
+    <!--    <link rel="stylesheet" href="/static/apa/docs/detail/all.min.css">-->
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/apa/docs/detail/jquery.fancybox.min.css">
+
+    <script>var GLOBAL_CONFIG = {
+        root: '/',
+        algolia: undefined,
+        localSearch: undefined,
+        translate: {
+            "defaultEncoding": 2,
+            "translateDelay": 0,
+            "msgToTraditionalChinese": "繁",
+            "msgToSimplifiedChinese": "简"
+        },
+        noticeOutdate: undefined,
+        highlight: {"plugin": "highlighjs", "highlightCopy": true, "highlightLang": true},
+        copy: {
+            success: '复制成功',
+            error: '复制错误',
+            noSupport: '浏览器不支持'
+        },
+        relativeDate: {
+            homepage: true,
+            post: false
+        },
+        runtime: '',
+        date_suffix: {
+            just: '刚刚',
+            min: '分钟前',
+            hour: '小时前',
+            day: '天前',
+            month: '个月前'
+        },
+        copyright: {
+            "limitCount": 100,
+            "languages": {
+                "author": "作者: Da Xiong",
+                "link": "链接: ",
+                "source": "来源: AndPHP",
+                "info": "著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"
+            }
+        },
+        ClickShowText: undefined,
+        lightbox: 'fancybox',
+        Snackbar: undefined,
+        justifiedGallery: {
+            js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+            css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+        },
+        isPhotoFigcaption: false,
+        islazyload: false,
+        isanchor: true
+    };
+
+    var saveToLocal = {
+        set: function setWithExpiry(key, value, ttl) {
+            const now = new Date()
+            const expiryDay = ttl * 86400000
+            const item = {
+                value: value,
+                expiry: now.getTime() + expiryDay,
+            }
+            localStorage.setItem(key, JSON.stringify(item))
+        },
+
+        get: function getWithExpiry(key) {
+            const itemStr = localStorage.getItem(key)
+
+            if (!itemStr) {
+                return undefined
+            }
+            const item = JSON.parse(itemStr)
+            const now = new Date()
+
+            if (now.getTime() > item.expiry) {
+                localStorage.removeItem(key)
+                return undefined
+            }
+            return item.value
+        }
+    }
+    </script>
+    <script id="config_change">
+        var GLOBAL_CONFIG_SITE = {
+            isPost: true,
+            isHome: false,
+            isHighlightShrink: false,
+            isToc: true,
+            postUpdate: '2020-11-13 22:07:20'
+        }
+    </script>
+    <noscript>
+        <style type="text/css">
+            #nav {
+                opacity: 1
+            }
+
+            .justified-gallery img {
+                opacity: 1
+            }
+
+            #recent-posts time,
+            #post-meta time {
+                display: inline !important
+            }
+        </style>
+    </noscript>
+    <script>
+        (function () {
+            window.activateDarkMode = function () {
+                document.documentElement.setAttribute('data-theme', 'dark')
+                if (document.querySelector('meta[name="theme-color"]') !== null) {
+                    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+                }
+            }
+            window.activateLightMode = function () {
+                document.documentElement.setAttribute('data-theme', 'light')
+                if (document.querySelector('meta[name="theme-color"]') !== null) {
+                    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+                }
+            }
+            const autoChangeMode = 'false'
+            const t = saveToLocal.get('theme')
+            if (autoChangeMode === '1') {
+                const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+                const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+                const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+                const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+                if (t === undefined) {
+                    if (isLightMode) activateLightMode()
+                    else if (isDarkMode) activateDarkMode()
+                    else if (isNotSpecified || hasNoSupport) {
+                        const now = new Date()
+                        const hour = now.getHours()
+                        const isNight = hour <= 6 || hour >= 18
+                        isNight ? activateDarkMode() : activateLightMode()
+                    }
+                    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+                        if (saveToLocal.get('theme') === undefined) {
+                            e.matches ? activateDarkMode() : activateLightMode()
+                        }
+                    })
+                } else if (t === 'light') activateLightMode()
+                else activateDarkMode()
+            } else if (autoChangeMode === '2') {
+                const now = new Date()
+                const hour = now.getHours()
+                const isNight = hour <= 6 || hour >= 18
+                if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+                else if (t === 'light') activateLightMode()
+                else activateDarkMode()
+            } else {
+                if (t === 'dark') activateDarkMode()
+                else if (t === 'light') activateLightMode()
+            }
+            const asideStatus = saveToLocal.get('aside-status')
+            if (asideStatus !== undefined) {
+                if (asideStatus === 'hide') {
+                    document.documentElement.classList.add('hide-aside')
+                } else {
+                    document.documentElement.classList.remove('hide-aside')
+                }
+            }
+        })()
+    </script>
+    <style type="text/css">
+        .v[data-class=v] {
+            font-size: 16px;
+            text-align: left
+        }
+
+        .v[data-class=v] * {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            line-height: 1.75
+        }
+
+        .v[data-class=v] .status-bar, .v[data-class=v] .veditor, .v[data-class=v] .vinput, .v[data-class=v] p, .v[data-class=v] pre code {
+            color: #555
+        }
+
+        .v[data-class=v] .vsys, .v[data-class=v] .vtime {
+            color: #b3b3b3
+        }
+
+        .v[data-class=v] .text-right {
+            text-align: right
+        }
+
+        .v[data-class=v] .text-center {
+            text-align: center
+        }
+
+        .v[data-class=v] img {
+            max-width: 100%;
+            border: none
+        }
+
+        .v[data-class=v] hr {
+            margin: .825em 0;
+            border-color: #f6f6f6;
+            border-style: dashed
+        }
+
+        .v[data-class=v].hide-avatar .vimg {
+            display: none
+        }
+
+        .v[data-class=v] a {
+            position: relative;
+            cursor: pointer;
+            color: #1abc9c;
+            text-decoration: none;
+            display: inline-block
+        }
+
+        .v[data-class=v] a:hover {
+            color: #d7191a
+        }
+
+        .v[data-class=v] code, .v[data-class=v] pre {
+            background-color: #f8f8f8;
+            padding: .2em .4em;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0
+        }
+
+        .v[data-class=v] pre {
+            padding: 10px;
+            overflow: auto;
+            line-height: 1.45
+        }
+
+        .v[data-class=v] pre code {
+            padding: 0;
+            background: transparent;
+            white-space: pre-wrap;
+            word-break: keep-all
+        }
+
+        .v[data-class=v] blockquote {
+            color: #666;
+            margin: .5em 0;
+            padding: 0 0 0 1em;
+            border-left: 8px solid hsla(0, 0%, 93%, .5)
+        }
+
+        .v[data-class=v] .vinput {
+            border: none;
+            resize: none;
+            outline: none;
+            padding: 10px 5px;
+            max-width: 100%;
+            font-size: .775em
+        }
+
+        .v[data-class=v] input[type=checkbox], .v[data-class=v] input[type=radio] {
+            display: inline-block;
+            vertical-align: middle;
+            margin-top: -2px
+        }
+
+        .v[data-class=v] .vicon {
+            cursor: pointer;
+            display: inline-block;
+            overflow: hidden;
+            fill: #555;
+            vertical-align: middle
+        }
+
+        .v[data-class=v] .vicon + .vicon {
+            margin-left: 10px
+        }
+
+        .v[data-class=v] .vicon.actived {
+            fill: #66b1ff
+        }
+
+        .v[data-class=v] .vrow {
+            font-size: 0;
+            padding: 10px 0
+        }
+
+        .v[data-class=v] .vrow .vcol {
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 14px
+        }
+
+        .v[data-class=v] .vrow .vcol.vcol-20 {
+            width: 20%
+        }
+
+        .v[data-class=v] .vrow .vcol.vcol-30 {
+            width: 30%
+        }
+
+        .v[data-class=v] .vrow .vcol.vcol-40 {
+            width: 40%
+        }
+
+        .v[data-class=v] .vrow .vcol.vcol-50 {
+            width: 50%
+        }
+
+        .v[data-class=v] .vrow .vcol.vcol-60 {
+            width: 60%
+        }
+
+        .v[data-class=v] .vrow .vcol.vcol-70 {
+            width: 70%
+        }
+
+        .v[data-class=v] .vrow .vcol.vcol-80 {
+            width: 80%
+        }
+
+        .v[data-class=v] .vrow .vcol.vctrl {
+            font-size: 12px
+        }
+
+        .v[data-class=v] .emoji, .v[data-class=v] .vemoji {
+            max-width: 25px;
+            vertical-align: middle;
+            margin: 0 1px;
+            display: inline-block
+        }
+
+        .v[data-class=v] .vwrap {
+            border: 1px solid #f0f0f0;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            position: relative;
+            padding: 10px
+        }
+
+        .v[data-class=v] .vwrap input {
+            background: transparent
+        }
+
+        .v[data-class=v] .vwrap .vedit {
+            position: relative;
+            padding-top: 10px
+        }
+
+        .v[data-class=v] .vwrap .cancel-reply-btn {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            cursor: pointer
+        }
+
+        .v[data-class=v] .vwrap .vemojis {
+            display: none;
+            font-size: 18px;
+            max-height: 145px;
+            overflow: auto;
+            padding-bottom: 10px;
+            -webkit-box-shadow: 0 0 1px #f0f0f0;
+            box-shadow: 0 0 1px #f0f0f0
+        }
+
+        .v[data-class=v] .vwrap .vemojis i {
+            font-style: normal;
+            padding-top: 7px;
+            width: 36px;
+            cursor: pointer;
+            text-align: center;
+            display: inline-block;
+            vertical-align: middle
+        }
+
+        .v[data-class=v] .vwrap .vpreview {
+            padding: 7px;
+            -webkit-box-shadow: 0 0 1px #f0f0f0;
+            box-shadow: 0 0 1px #f0f0f0
+        }
+
+        .v[data-class=v] .vwrap .vheader .vinput {
+            width: 33.33%;
+            border-bottom: 1px dashed #dedede
+        }
+
+        .v[data-class=v] .vwrap .vheader.item2 .vinput {
+            width: 50%
+        }
+
+        .v[data-class=v] .vwrap .vheader.item1 .vinput {
+            width: 100%
+        }
+
+        .v[data-class=v] .vwrap .vheader .vinput:focus {
+            border-bottom-color: #eb5055
+        }
+
+        @media screen and (max-width: 520px) {
+            .v[data-class=v] .vwrap .vheader.item2 .vinput, .v[data-class=v] .vwrap .vheader .vinput {
+                width: 100%
+            }
+        }
+
+        .v[data-class=v] .vpower {
+            color: #999;
+            font-size: .75em;
+            padding: .5em 0
+        }
+
+        .v[data-class=v] .vpower a {
+            font-size: .75em
+        }
+
+        .v[data-class=v] .vcount {
+            padding: 5px;
+            font-weight: 600;
+            font-size: 1.25em
+        }
+
+        .v[data-class=v] ol, .v[data-class=v] ul {
+            padding: 0;
+            margin-left: 1.25em
+        }
+
+        .v[data-class=v] .txt-center {
+            text-align: center
+        }
+
+        .v[data-class=v] .txt-right {
+            text-align: right
+        }
+
+        .v[data-class=v] .pd5 {
+            padding: 5px
+        }
+
+        .v[data-class=v] .pd10 {
+            padding: 10px
+        }
+
+        .v[data-class=v] .veditor {
+            width: 100%;
+            min-height: 8.75em;
+            font-size: .875em;
+            background: transparent;
+            resize: vertical;
+            -webkit-transition: all .25s ease;
+            transition: all .25s ease
+        }
+
+        .v[data-class=v] .vbtn {
+            -webkit-transition-duration: .4s;
+            transition-duration: .4s;
+            text-align: center;
+            color: #555;
+            border: 1px solid #ededed;
+            border-radius: .3em;
+            display: inline-block;
+            background: transparent;
+            margin-bottom: 0;
+            font-weight: 400;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            white-space: nowrap;
+            padding: .5em 1.25em;
+            font-size: .875em;
+            line-height: 1.42857143;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            outline: none
+        }
+
+        .v[data-class=v] .vbtn + .vbtn {
+            margin-left: 1.25em
+        }
+
+        .v[data-class=v] .vbtn:active, .v[data-class=v] .vbtn:hover {
+            color: #3090e4;
+            border-color: #3090e4
+        }
+
+        .v[data-class=v] .vbtn:disabled {
+            border-color: #e1e1e1;
+            color: #e1e1e1;
+            background-color: #fdfafa;
+            cursor: not-allowed
+        }
+
+        .v[data-class=v] .vempty {
+            padding: 1.25em;
+            text-align: center;
+            color: #555;
+            overflow: auto
+        }
+
+        .v[data-class=v] .vsys {
+            display: inline-block;
+            padding: .2em .5em;
+            font-size: .75em;
+            border-radius: .2em;
+            margin-right: .3em
+        }
+
+        @media screen and (max-width: 520px) {
+            .v[data-class=v] .vsys {
+                display: none
+            }
+        }
+
+        .v[data-class=v] .vcards {
+            width: 100%
+        }
+
+        .v[data-class=v] .vcards .vcard {
+            padding-top: 1.25em;
+            position: relative;
+            display: block
+        }
+
+        .v[data-class=v] .vcards .vcard:after {
+            content: "";
+            clear: both;
+            display: block
+        }
+
+        .v[data-class=v] .vcards .vcard .vimg {
+            width: 3.125em;
+            height: 3.125em;
+            float: left;
+            border-radius: 50%;
+            margin-right: .7525em;
+            border: 1px solid #f5f5f5;
+            padding: .125em
+        }
+
+        @media screen and (max-width: 720px) {
+            .v[data-class=v] .vcards .vcard .vimg {
+                width: 2.5em;
+                height: 2.5em
+            }
+        }
+
+        .v[data-class=v] .vcards .vcard .vhead {
+            line-height: 1.5;
+            margin-top: 0
+        }
+
+        .v[data-class=v] .vcards .vcard .vhead .vnick {
+            position: relative;
+            font-size: .875em;
+            font-weight: 500;
+            margin-right: .875em;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block
+        }
+
+        .v[data-class=v] .vcards .vcard .vhead .vnick:hover {
+            color: #d7191a
+        }
+
+        .v[data-class=v] .vcards .vcard .vh {
+            overflow: hidden;
+            padding-bottom: .5em;
+            border-bottom: 1px dashed #f5f5f5
+        }
+
+        .v[data-class=v] .vcards .vcard .vh .vtime {
+            font-size: .75em;
+            margin-right: .875em
+        }
+
+        .v[data-class=v] .vcards .vcard .vh .vmeta {
+            line-height: 1;
+            position: relative
+        }
+
+        .v[data-class=v] .vcards .vcard .vh .vmeta .vat {
+            font-size: .8125em;
+            color: #ef2f11;
+            cursor: pointer;
+            float: right
+        }
+
+        .v[data-class=v] .vcards .vcard:last-child .vh {
+            border-bottom: none
+        }
+
+        .v[data-class=v] .vcards .vcard .vcontent {
+            word-wrap: break-word;
+            word-break: break-all;
+            font-size: .875em;
+            line-height: 2;
+            position: relative;
+            margin-bottom: .75em;
+            padding-top: .625em
+        }
+
+        .v[data-class=v] .vcards .vcard .vcontent.expand {
+            cursor: pointer;
+            max-height: 8em;
+            overflow: hidden
+        }
+
+        .v[data-class=v] .vcards .vcard .vcontent.expand:before {
+            display: block;
+            content: "";
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            bottom: 3.15em;
+            background: -webkit-gradient(linear, left top, left bottom, from(hsla(0, 0%, 100%, 0)), to(hsla(0, 0%, 100%, .9)));
+            background: linear-gradient(180deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, .9));
+            z-index: 999
+        }
+
+        .v[data-class=v] .vcards .vcard .vcontent.expand:after {
+            display: block;
+            content: attr(data-expand);
+            text-align: center;
+            color: #828586;
+            position: absolute;
+            width: 100%;
+            height: 3.15em;
+            line-height: 3.15em;
+            left: 0;
+            bottom: 0;
+            z-index: 999;
+            background: hsla(0, 0%, 100%, .9)
+        }
+
+        .v[data-class=v] .vcards .vcard .vquote {
+            padding-left: 1em;
+            border-left: 1px dashed hsla(0, 0%, 93%, .5)
+        }
+
+        .v[data-class=v] .vcards .vcard .vquote .vimg {
+            width: 2.225em;
+            height: 2.225em
+        }
+
+        .v[data-class=v] .vpage .vmore {
+            margin: 1em 0
+        }
+
+        .v[data-class=v] .clear {
+            content: "";
+            display: block;
+            clear: both
+        }
+
+        @-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg)
+            }
+            to {
+                -webkit-transform: rotate(1turn);
+                transform: rotate(1turn)
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg)
+            }
+            to {
+                -webkit-transform: rotate(1turn);
+                transform: rotate(1turn)
+            }
+        }
+
+        @-webkit-keyframes pulse {
+            50% {
+                background: #dcdcdc
+            }
+        }
+
+        @keyframes pulse {
+            50% {
+                background: #dcdcdc
+            }
+        }
+
+        .v[data-class=v] .vspinner {
+            width: 22px;
+            height: 22px;
+            display: inline-block;
+            border: 6px double #a0a0a0;
+            border-top-color: transparent;
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            -webkit-animation: spin 1s infinite linear;
+            animation: spin 1s infinite linear;
+            position: relative;
+            vertical-align: middle;
+            margin: 0 5px
+        }
+
+        .dark .v[data-class=v] .status-bar, .dark .v[data-class=v] .veditor, .dark .v[data-class=v] .vinput, .dark .v[data-class=v] p, .dark .v[data-class=v] pre code, .night .v[data-class=v] .status-bar, .night .v[data-class=v] .veditor, .night .v[data-class=v] .vinput, .night .v[data-class=v] p, .night .v[data-class=v] pre code, .theme__dark .v[data-class=v] .status-bar, .theme__dark .v[data-class=v] .veditor, .theme__dark .v[data-class=v] .vinput, .theme__dark .v[data-class=v] p, .theme__dark .v[data-class=v] pre code, [data-theme=dark] .v[data-class=v] .status-bar, [data-theme=dark] .v[data-class=v] .veditor, [data-theme=dark] .v[data-class=v] .vinput, [data-theme=dark] .v[data-class=v] p, [data-theme=dark] .v[data-class=v] pre code {
+            color: #b2b2b5
+        }
+
+        .dark .v[data-class=v] .vsys, .dark .v[data-class=v] .vtime, .night .v[data-class=v] .vsys, .night .v[data-class=v] .vtime, .theme__dark .v[data-class=v] .vsys, .theme__dark .v[data-class=v] .vtime, [data-theme=dark] .v[data-class=v] .vsys, [data-theme=dark] .v[data-class=v] .vtime {
+            color: #929298
+        }
+
+        .dark .v[data-class=v] code, .dark .v[data-class=v] pre, .dark .v[data-class=v] pre code, .night .v[data-class=v] code, .night .v[data-class=v] pre, .night .v[data-class=v] pre code, .theme__dark .v[data-class=v] code, .theme__dark .v[data-class=v] pre, .theme__dark .v[data-class=v] pre code, [data-theme=dark] .v[data-class=v] code, [data-theme=dark] .v[data-class=v] pre, [data-theme=dark] .v[data-class=v] pre code {
+            color: #929298;
+            background-color: #151414
+        }
+
+        .dark .v[data-class=v] .vwrap, .night .v[data-class=v] .vwrap, .theme__dark .v[data-class=v] .vwrap, [data-theme=dark] .v[data-class=v] .vwrap {
+            border-color: #b2b2b5
+        }
+
+        .dark .v[data-class=v] .vicon, .night .v[data-class=v] .vicon, .theme__dark .v[data-class=v] .vicon, [data-theme=dark] .v[data-class=v] .vicon {
+            fill: #b2b2b5
+        }
+
+        .dark .v[data-class=v] .vicon.actived, .night .v[data-class=v] .vicon.actived, .theme__dark .v[data-class=v] .vicon.actived, [data-theme=dark] .v[data-class=v] .vicon.actived {
+            fill: #66b1ff
+        }
+
+        .dark .v[data-class=v] .vbtn, .night .v[data-class=v] .vbtn, .theme__dark .v[data-class=v] .vbtn, [data-theme=dark] .v[data-class=v] .vbtn {
+            color: #b2b2b5;
+            border-color: #b2b2b5
+        }
+
+        .dark .v[data-class=v] .vbtn:hover, .night .v[data-class=v] .vbtn:hover, .theme__dark .v[data-class=v] .vbtn:hover, [data-theme=dark] .v[data-class=v] .vbtn:hover {
+            color: #66b1ff;
+            border-color: #66b1ff
+        }
+
+        .dark .v[data-class=v] a:hover, .night .v[data-class=v] a:hover, .theme__dark .v[data-class=v] a:hover, [data-theme=dark] .v[data-class=v] a:hover {
+            color: #d7191a
+        }
+
+        .dark .v[data-class=v] .vcards .vcard .vcontent.expand:before, .night .v[data-class=v] .vcards .vcard .vcontent.expand:before, .theme__dark .v[data-class=v] .vcards .vcard .vcontent.expand:before, [data-theme=dark] .v[data-class=v] .vcards .vcard .vcontent.expand:before {
+            background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, .3)), to(rgba(0, 0, 0, .7)));
+            background: linear-gradient(180deg, rgba(0, 0, 0, .3), rgba(0, 0, 0, .7))
+        }
+
+        .dark .v[data-class=v] .vcards .vcard .vcontent.expand:after, .night .v[data-class=v] .vcards .vcard .vcontent.expand:after, .theme__dark .v[data-class=v] .vcards .vcard .vcontent.expand:after, [data-theme=dark] .v[data-class=v] .vcards .vcard .vcontent.expand:after {
+            background: rgba(0, 0, 0, .7)
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .v[data-class=v] .status-bar, .v[data-class=v] .veditor, .v[data-class=v] .vinput, .v[data-class=v] p, .v[data-class=v] pre code {
+                color: #b2b2b5
+            }
+
+            .v[data-class=v] .vsys, .v[data-class=v] .vtime {
+                color: #929298
+            }
+
+            .v[data-class=v] code, .v[data-class=v] pre, .v[data-class=v] pre code {
+                color: #929298;
+                background-color: #151414
+            }
+
+            .v[data-class=v] .vwrap {
+                border-color: #b2b2b5
+            }
+
+            .v[data-class=v] .vicon {
+                fill: #b2b2b5
+            }
+
+            .v[data-class=v] .vicon.actived {
+                fill: #66b1ff
+            }
+
+            .v[data-class=v] .vbtn {
+                color: #b2b2b5;
+                border-color: #b2b2b5
+            }
+
+            .v[data-class=v] .vbtn:hover {
+                color: #66b1ff;
+                border-color: #66b1ff
+            }
+
+            .v[data-class=v] a:hover {
+                color: #d7191a
+            }
+
+            .v[data-class=v] .vcards .vcard .vcontent.expand:before {
+                background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, .3)), to(rgba(0, 0, 0, .7)));
+                background: linear-gradient(180deg, rgba(0, 0, 0, .3), rgba(0, 0, 0, .7))
+            }
+
+            .v[data-class=v] .vcards .vcard .vcontent.expand:after {
+                background: rgba(0, 0, 0, .7)
+            }
         }
     </style>
 </head>
-<body>
-<article class="markdown-body">
-<h3>1.前端接口文档</h3>
+<body style="overflow: auto;">
+<div id="loading-box" class="loaded">
+    <div class="loading-left-bg"></div>
+    <div class="loading-right-bg"></div>
+    <div class="spinner-box">
+        <div class="configure-border-1">
+            <div class="configure-core"></div>
+        </div>
+        <div class="configure-border-2">
+            <div class="configure-core"></div>
+        </div>
+        <div class="loading-word">加载中...</div>
+    </div>
+</div>
+<div id="body-wrap">
+    <header class="post-bg" id="page-header"
+            style="background-image: url(https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg)">
+        <nav id="nav" class="show">
+          <span id="blog_name">
+            <a id="site-name" href="http://andphp.com/" data-pjax-state="">AndPHP apa-apiDocs</a>
+          </span>
+            <span id="menus"> <div class="menus_items"> <a class="site-page"
+                                                           href="http://andphp.com/"
+                                                           data-pjax-state=""><i
+                class="fa-fw fas fa-home"></i><span> 生活要有态度</span></a></div></span>
+        </nav>
+        <div id="post-info">
+            <h1 class="post-title">PHP从入门到放弃</h1>
+            <div id="post-meta">
+                <div class="meta-firstline"><span class="post-meta-date"><i
+                    class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time
+                    class="post-meta-date-created" datetime="2020-11-13T04:20:33.000Z"
+                    title="发表于 2020-11-13 12:20:33">2020-11-13</time><span class="post-meta-separator">|</span><i
+                    class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time
+                    class="post-meta-date-updated" datetime="2020-11-13T14:07:20.180Z"
+                    title="更新于 2020-11-13 22:07:20">2020-11-13</time></span></div>
+                <div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i
+                    class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span
+                    id="busuanzi_value_page_pv">1</span></span></div>
+            </div>
+        </div>
+    </header>
+</div>
+<main class="layout" id="content-inner">
+    <div id="post">
+        <article class="post-content" id="article-container">
+            <h3>1.前端接口文档</h3>
 <h4>参数解释，（字母顺序）：</h4>
 <table>
 <thead>
@@ -178,7 +1022,285 @@
 <h4>人员列表(共0个示例)</h4>
 <pre><code class="language-http">http://newiot.test/api/agent/v1/community/user/list?size=3</code></pre>
 <hr />
-</article>
-<script>hljs.initHighlightingOnLoad();</script>
+        </article>
+        <div class="post-copyright">
+            <div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span
+                class="post-copyright-info"><a href="mailto:undefined" data-pjax-state="">Da Xiong</a></span>
+            </div>
+            <div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span
+                class="post-copyright-info"><a
+                href="https://www.andphp.com/2020/11/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%20PHP%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"
+                data-pjax-state="">https://www.andphp.com/2020/11/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%20PHP%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</a></span>
+            </div>
+            <div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span
+                class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a
+                href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a
+                href="https://www.andphp.com/" target="_blank">AndPHP</a>！</span></div>
+        </div>
+    </div>
+    <div class="aside_content" id="aside_content">
+        <div class="card-widget card-info">
+            <div class="card-content">
+                <div class="card-info-avatar is-center"><img class="avatar-img"
+                                                             src="/static/apa/docs/detail/avatar.png"
+                                                             alt="avatar">
+                    <div class="author-info__name">Da Xiong</div>
+                    <div class="author-info__description">过去的代码都是未经测试的代码</div>
+                </div>
+                <div class="card-info-data">
+                    <div class="card-info-data-item is-center"><a href="http://andphp.com/archives/"
+                                                                  data-pjax-state="">
+                        <div class="headline">文章</div>
+                        <div class="length-num">6</div>
+                    </a></div>
+                    <div class="card-info-data-item is-center"><a href="http://andphp.com/tags/" data-pjax-state="">
+                        <div class="headline">标签</div>
+                        <div class="length-num">6</div>
+                    </a></div>
+                    <div class="card-info-data-item is-center"><a href="http://andphp.com/categories/"
+                                                                  data-pjax-state="">
+                        <div class="headline">分类</div>
+                        <div class="length-num">5</div>
+                    </a></div>
+                </div>
+                <a class="button--animated" id="card-info-btn" target="_blank" rel="noopener"
+                   href="https://gitee.com/andphp"><i class="fab fa-github"></i><span>Follow Me</span></a></div>
+        </div>
+        <div class="card-widget card-announcement">
+            <div class="card-content">
+                <div class="item-headline"><i
+                    class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div>
+                <div class="announcement_content">This is my Blog</div>
+            </div>
+        </div>
+        <div class="sticky_layout">
+            <div class="card-widget" id="card-toc">
+                <div class="card-content">
+                    <div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div>
+                    <div class="toc-content" progress-percentage="65">
+                        <ol class="toc">
+                            <li class="toc-item toc-level-4"><a class="toc-link"
+                                                                href="http://andphp.com/2020/11/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%20PHP%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/#PHP%E6%98%AF%E4%B8%96%E7%95%8C%E4%B8%8A%E6%9C%80%E5%A5%BD%E7%9A%84%E8%AF%AD%E8%A8%80"
+                                                                data-pjax-state=""><span
+                                class="toc-number">1.</span> <span class="toc-text">PHP是世界上最好的语言</span></a></li>
+                            <li class="toc-item toc-level-4"><a class="toc-link active"
+                                                                href="http://andphp.com/2020/11/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%20PHP%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/#%E7%BB%99%E4%BC%A0%E7%BB%9FPHP%E6%8F%92%E4%B8%8A%E7%BF%85%E8%86%80%E7%9A%84%E7%8E%B0%E4%BB%A3PHP%E6%89%A9%E5%B1%95-SWOOLE"
+                                                                data-pjax-state=""><span
+                                class="toc-number">2.</span> <span
+                                class="toc-text">给传统PHP插上翅膀的现代PHP扩展 SWOOLE</span></a></li>
+                            <li class="toc-item toc-level-4"><a class="toc-link"
+                                                                href="http://andphp.com/2020/11/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%20PHP%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/#%E5%A6%82%E4%BD%95%E4%BB%8EPHP%E8%BF%87%E6%B8%A1%E5%88%B0Go-golang"
+                                                                data-pjax-state=""><span
+                                class="toc-number">3.</span> <span
+                                class="toc-text">如何从PHP过渡到Go(golang)</span></a></li>
+                        </ol>
+                        <li class="toc-item toc-level-3"><a class="toc-link"
+                                                            href="http://andphp.com/2020/11/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%20PHP%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/#%E5%8D%9A%E5%AE%A2%E5%86%85%E5%AE%B9%E5%88%86%E4%BA%AB%E6%97%A2%E5%AE%9A%E6%8A%80%E6%9C%AF%E6%96%B9%E5%90%91%E5%92%8C%E7%9B%AE%E6%A0%87"
+                                                            data-pjax-state=""><span class="toc-number"></span>
+                            <span class="toc-text">博客内容分享既定技术方向和目标</span></a></li>
+                    </div>
+                </div>
+            </div>
+            <div class="card-widget card-recent-post">
+                <div class="card-content">
+                    <div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div>
+                    <div class="aside-list">
+                        <div class="aside-list-item no-cover">
+                            <div class="content"><a class="title"
+                                                    href="http://andphp.com/2020/11/16/%E4%BD%BF%E7%94%A8Docker-Rancher%E5%9C%A8K8S%E4%B8%8A%E9%83%A8%E7%BD%B2%E9%AB%98%E6%80%A7%E8%83%BDPHP%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/"
+                                                    title="使用Docker-Rancher在K8S上部署高性能PHP应用程序" data-pjax-state="">使用Docker-Rancher在K8S上部署高性能PHP应用程序</a>
+                                <time datetime="2020-11-15T20:48:26.000Z" title="发表于 2020-11-16 04:48:26">
+                                    2020-11-16
+                                </time>
+                            </div>
+                        </div>
+                        <div class="aside-list-item no-cover">
+                            <div class="content"><a class="title"
+                                                    href="http://andphp.com/2020/11/15/Docker-rancher%E6%90%AD%E5%BB%BAk8s%E9%9B%86%E7%BE%A4%E7%8E%AF%E5%A2%83/"
+                                                    title="Docker-rancher搭建k8s集群环境" data-pjax-state="">Docker-rancher搭建k8s集群环境</a>
+                                <time datetime="2020-11-15T04:15:39.000Z" title="发表于 2020-11-15 12:15:39">
+                                    2020-11-15
+                                </time>
+                            </div>
+                        </div>
+                        <div class="aside-list-item no-cover">
+                            <div class="content"><a class="title"
+                                                    href="http://andphp.com/2020/11/13/%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E8%B5%8BDocker%E6%9D%83%E9%99%90/"
+                                                    title="创建用户赋Docker权限" data-pjax-state="">创建用户赋Docker权限</a>
+                                <time datetime="2020-11-13T15:40:53.000Z" title="发表于 2020-11-13 23:40:53">
+                                    2020-11-13
+                                </time>
+                            </div>
+                        </div>
+                        <div class="aside-list-item no-cover">
+                            <div class="content"><a class="title"
+                                                    href="http://andphp.com/2020/11/13/Linux-CentOS7-%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8%E7%9A%84%E6%96%B9%E6%B3%95/"
+                                                    title="Linux-CentOS7-升级内核的方法" data-pjax-state="">Linux-CentOS7-升级内核的方法</a>
+                                <time datetime="2020-11-13T14:54:13.000Z" title="发表于 2020-11-13 22:54:13">
+                                    2020-11-13
+                                </time>
+                            </div>
+                        </div>
+                        <div class="aside-list-item"><a class="thumbnail"
+                                                        href="http://andphp.com/2020/11/13/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%AE%89%E8%A3%85Docker/"
+                                                        title="CentOS环境配置安装Docker" data-pjax-state=""><img
+                            src="./PHP从入门到放弃 _ AndPHP_files/default.jpg"
+                            onerror="this.onerror=null;this.src=&#39;/img/404.jpg&#39;"
+                            alt="CentOS环境配置安装Docker"></a>
+                            <div class="content"><a class="title"
+                                                    href="http://andphp.com/2020/11/13/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%AE%89%E8%A3%85Docker/"
+                                                    title="CentOS环境配置安装Docker"
+                                                    data-pjax-state="">CentOS环境配置安装Docker</a>
+                                <time datetime="2020-11-13T13:57:50.000Z" title="发表于 2020-11-13 21:57:50">
+                                    2020-11-13
+                                </time>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer id="footer">
+    <div id="footer-wrap">
+        <div class="copyright">©2020 By Da Xiong</div>
+        <div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener"
+                                                       href="https://hexo.io/">Hexo</a><span
+            class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener"
+                                                                href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a>
+        </div>
+        <div class="footer_custom_text">Hi, welcome to <a target="_blank" rel="noopener" href="http://andphp.com/">AndPHP</a>!
+        </div>
+    </div>
+</footer>
+<div id="rightside" style="opacity: 1; transform: translateX(-38px);">
+    <div id="rightside-config-hide">
+        <button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button>
+        <button id="translateLink" type="button" title="简繁转换">繁</button>
+        <button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button>
+        <button id="hide-aside-btn" type="button"><i class="fas fa-arrows-alt-h"></i></button>
+    </div>
+    <div id="rightside-config-show">
+        <button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button>
+        <button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button>
+        <!--        <a id="to_comment"-->
+        <!--           href="http://andphp.com/2020/11/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%20PHP%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/#post-comment"-->
+        <!--           title="直达评论" data-pjax-state=""><i class="fas fa-comments"></i></a>-->
+        <button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button>
+    </div>
+</div>
+<div>
+    <script src="/static/apa/docs/detail/jquery.min.js"></script>
+    <script src="/static/apa/docs/detail/utils.js"></script>
+    <script src="/static/apa/docs/detail/main.js"></script>
+    <script src="/static/apa/docs/detail/tw_cn.js"></script>
+    <script src="/static/apa/docs/detail/jquery.fancybox.min.js"></script>
+    <script>var preloader = {
+        endLoading: () => {
+            document.body.style.overflow = 'auto';
+            document.getElementById('loading-box').classList.add("loaded")
+        },
+        initLoading: () => {
+            document.body.style.overflow = '';
+            document.getElementById('loading-box').classList.remove("loaded")
+
+        }
+    }
+    window.addEventListener('load', () => {
+        preloader.endLoading()
+    })</script>
+    <div class="js-pjax"></div>
+    <div class="aplayer no-destroy no-reload" data-id="5329614795" data-server="netease" data-type="playlist"
+         data-fixed="true" data-mini="true" data-listfolded="false" data-order="random" data-preload="none"
+         data-autoplay="true" muted=""></div>
+    <script defer="defer" id="ribbon" src="/static/apa/docs/detail/canvas-ribbon.min.js" size="150" alpha="0.6"
+            zindex="-1" mobile="false" data-click="false"></script>
+    <script src="/static/apa/docs/detail/activate-power-mode.min.js"></script>
+    <script>POWERMODE.colorful = true;
+    POWERMODE.shake = true;
+    POWERMODE.mobile = false;
+    document.body.addEventListener('input', POWERMODE);
+    </script>
+    <link rel="stylesheet" href="/static/apa/docs/detail/APlayer.min.css">
+    <script src="/static/apa/docs/detail/APlayer.min.js"></script>
+    <script src="/static/apa/docs/detail/Meting.min.js"></script>
+    <script src="/static/apa/docs/detail/pjax.min.js"></script>
+    <script>
+        let pjaxSelectors = [
+            'title',
+            '#config_change',
+            '#body-wrap',
+            '#rightside-config-hide',
+            '#rightside-config-show',
+            '.js-pjax'
+        ]
+
+        if (false) {
+            pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+        }
+
+        var pjax = new Pjax({
+            elements: 'a:not([target="_blank"])',
+            selectors: pjaxSelectors,
+            cacheBust: false,
+            analytics: false,
+            scrollRestoration: false
+        })
+
+        document.addEventListener('pjax:complete', function () {
+            window.refreshFn()
+
+            $('script[data-pjax]').each(function () {
+                $(this).parent().append($(this).remove())
+            })
+
+            GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+            typeof chatBtnFn === 'function' && chatBtnFn()
+            typeof panguInit === 'function' && panguInit()
+
+            if (typeof gtag === 'function') {
+                gtag('config', '', {'page_path': window.location.pathname});
+            }
+
+            typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+            // Analytics
+            if (false) {
+                MtaH5.pgv()
+            }
+
+            // prismjs
+            typeof Prism === 'object' && Prism.highlightAll()
+
+            typeof preloader === 'object' && preloader.endLoading()
+        })
+
+
+        document.addEventListener('pjax:send', function () {
+            typeof preloader === 'object' && preloader.initLoading()
+
+            if (window.aplayers) {
+                for (let i = 0; i < window.aplayers.length; i++) {
+                    if (!window.aplayers[i].options.fixed) {
+                        window.aplayers[i].destroy()
+                    }
+                }
+            }
+
+            typeof typed === 'object' && typed.destroy()
+
+            $(window).off('scroll')
+
+            //reset readmode
+            $('body').hasClass('read-mode') && $('body').removeClass('read-mode')
+
+        })</script>
+</div>
+<canvas width="903" height="881"
+        style="position: fixed; top: 0px; left: 0px; pointer-events: none; z-index: 999999;"></canvas>
+<canvas width="1920" height="937"
+        style="opacity: 0.6; position: fixed; top: 0px; left: 0px; z-index: -1; width: 100%; height: 100%; pointer-events: none;"></canvas>
 </body>
 </html>

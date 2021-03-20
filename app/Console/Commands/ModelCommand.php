@@ -77,7 +77,7 @@ class ModelCommand extends Command
      */
     protected function getStub()
     {
-        $stub = $stub ?? '/stubs/model.plain.stub';
+        $stub = $stub ?? '/Stubs/model.plain.stub';
 
         return __DIR__ . $stub;
     }

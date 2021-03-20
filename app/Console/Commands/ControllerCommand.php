@@ -76,7 +76,7 @@ class ControllerCommand extends Command
      */
     protected function getStub()
     {
-        $stub = $stub ?? '/stubs/controller.plain.stub';
+        $stub = $stub ?? '/Stubs/controller.plain.stub';
 
         return __DIR__.$stub;
     }

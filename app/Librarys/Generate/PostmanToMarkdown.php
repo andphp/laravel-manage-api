@@ -68,6 +68,12 @@ class PostmanToMarkdown
     ];
 
     /**
+     * 分组 json数组格式 '"一组","二组"'
+     * @var string
+     */
+    protected $categories = '';
+
+    /**
      * 给数组降维
      * @param array $array [description]
      * @return [type] [description]
@@ -203,17 +209,26 @@ class PostmanToMarkdown
         // 去掉一些不必显示的
         $title = '|' . implode('|', $columns_name) . '|' . PHP_EOL;
         $str = '|' . str_repeat('--|', count($columns_name)) . PHP_EOL;
+
         foreach ($rows as $key => $value) {
             if (!in_array($value['key'], self::EXCEPT) && empty($value['disabled'])) {
                 # 截取超长的值
-                if (mb_strlen($value['value']) > self::MAX_SHOW) {
+                if (isset($value['value']) && mb_strlen($value['value']) > self::MAX_SHOW) {
                     $value['value'] = substr($value['value'], 0, self::MAX_SHOW) . '....';
                 }
+                if (isset($value['src']) && mb_strlen($value['src']) > self::MAX_SHOW) {
+                    $value['value'] = substr($value['src'], 0, self::MAX_SHOW) . '....';
+                }
                 # 截取描述
-                if (!empty($value['description']) && mb_strlen($value['description']) > self::MAX_SHOW) {
+                if (isset($value['description']) && !empty($value['description']) && mb_strlen($value['description']) > self::MAX_SHOW) {
                     $value['description'] = substr($value['description'], 0, self::MAX_SHOW) . '....';
                 }
-
+                if (!isset($value['value'])) {
+                    $value['value'] = '';
+                }
+                if (!isset($value['required'])) {
+                    $value['required'] = '';
+                }
                 # 补齐参数属性
                 if ($type == 'params') {
                     $value = [
@@ -272,6 +287,7 @@ class PostmanToMarkdown
      */
     public function getMarkdownDocument($intput_file, $output_file)
     {
+
         if (!file_exists($intput_file)) {
             die($intput_file . ' file doesn\'t exist.');
         }
@@ -281,90 +297,133 @@ class PostmanToMarkdown
             die($intput_file . ' is not a json file.');
         }
 
+        $this->categories = '"' . $data['info']['name'] . '"';
 
-        foreach ($data['item'] as $key => $value) {
+        $this->echoItem($data['item'], $output_file);
 
-            $output_path = $output_file;
+    }
 
-            # 开启缓冲区
-            ob_start();
+    public function echoItem($item, $output_file)
+    {
 
-            # 输出参数解释
-            $this->echoParamsDesc();
+        foreach ($item as $key => $value) {
+            // 多级目录递归
+            if (isset($value['item'])) {
+                $this->categories = $this->categories . ', "' . $value['name'].'"';
+                return $this->echoItem($value['item'], $output_file);
+            } else {
+                # 跳过copy的
+                if (strpos($value['name'], 'Copy')) {
+                    continue;
+                }
+                $output_path = $output_file;
+                # 创建文件夹和文件
+                $path = $value['request']['url']['path'];
+                $pathCount = count($path);
+                for ($p = 0; $p < $pathCount - 1; $p++) {
+                    $output_path .= '/' . $path[$p];
+                    File::isDirectory($output_path) or File::makeDirectory($output_path, 0777, true, true);
+                }
 
-            # 创建文件夹和文件
+                # 开启缓冲区
+                ob_start();
 
-            $path = $value['request']['url']['path'];
-            $pathCount = count($path);
-            for ($p = 0; $p < $pathCount - 1; $p++) {
-                $output_path .= '/' . $path[$p];
+                # 输出title
+                $this->echoTitle($value['name']);
+                # 输出分组
+                $this->echoCategories($this->categories);
 
-                File::isDirectory($output_path) or File::makeDirectory($output_path, 0777, true, true);
-            }
-
-
-            # 跳过copy的
-            if (strpos($value['name'], 'Copy')) {
-                continue;
-            }
-            $example_numbers = count($value['response']);
-            echo $this->htag(4, $value['name'] . "(共{$example_numbers}个示例)");
-
-            # 输出描述
-            if (!empty($value['request']['description'])) {
-                echo $this->description($value['request']['description']);
-            }
-
-            # 输出http请求
-            echo $this->codeBlock($value['request']['url']['raw'], 'http');
-
-            foreach ($value['response'] as $k => $example) {
-                $k++;
-                # 输出example名称
-                echo $this->htag(5, "示例{$k}：" . $example['name']);
-                $request = $example['originalRequest'];
-
+                ## markdown正文
+                echo $this->htag(3, "请求URI:");
                 # 输出http请求
-                $code = $request['method'] . ' ' . $request['url']['raw'];
-                echo $this->codeBlock($code, 'http');
-
-                # 输出header
-                $headers = $request['header'];
-                if ($headers) {
-                    echo $this->htag(6, 'Request Header:');
-                    echo $this->table($headers, 'header');
+                echo $this->codeBlock($value['request']['url']['raw'], 'http');
+                # 输出描述
+                if (!empty($value['request']['description'])) {
+                    echo $this->description($value['request']['description']);
                 }
 
-                # 输出参数
-                $params = $request['body']['urlencoded'] ?? '';
-                if (empty($params)) {
-                    $params = $request['url']['query'] ?? '';
+                # 输出参数注解
+                # $this->echoParamsDesc( $this->categories);
+
+                # 输出请求header参数
+                if (!empty($value['request']['header'])) {
+                    echo $this->table($value['request']['header'], 'header');
                 }
-                if ($params) {
-                    echo $this->htag(6, 'Request Params:');
-                    echo $this->table($params, 'params');
+                if (isset($value['request']['body']['formdata']) && !empty($value['request']['body']['formdata'])) {
+                    echo $this->table($value['request']['body']['formdata'], 'params');
+                }
+                if (isset($value['request']['body']['xwwwformurlencoded']) && !empty($value['request']['body']['xwwwformurlencoded'])) {
+                    echo $this->table($value['request']['body']['xwwwformurlencoded'], 'params');
+                }
+                if (isset($value['request']['body']['raw']) && !empty($value['request']['body']['raw'])) {
+                    echo $this->table(json_decode($value['request']['body']['raw']), 'params');
                 }
 
-                # 输出响应结果
-                $response_body = $example['body'];
-                if ($response_body) {
-                    echo $this->htag(6, 'Response:');
-                    echo $this->codeBlock($response_body, 'json');
+
+                # 输出返回
+                $example_numbers = count($value['response']);
+                echo $this->htag(4, $value['name'] . "(共{$example_numbers}个示例)");
+
+                foreach ($value['response'] as $k => $example) {
+                    $k++;
+                    # 输出example名称
+                    echo $this->htag(5, "示例{$k}：" . $example['name']);
+                    $request = $example['originalRequest'];
+
+                    # 输出http请求
+                    $code = $request['method'] . ' ' . $request['url']['raw'];
+                    echo $this->codeBlock($code, 'http');
+
+                    # 输出header
+                    $headers = $request['header'];
+                    if ($headers) {
+                        echo $this->htag(6, 'Request Header:');
+                        echo $this->table($headers, 'header');
+                    }
+
+                    # 输出参数
+                    $params = $request['body']['urlencoded'] ?? '';
+                    if (empty($params)) {
+                        $params = $request['url']['query'] ?? '';
+                    }
+                    if ($params) {
+                        echo $this->htag(6, 'Request Params:');
+                        echo $this->table($params, 'params');
+                    }
+
+                    # 输出响应结果
+                    $response_body = $example['body'];
+                    if ($response_body) {
+                        echo $this->htag(6, 'Response:');
+                        echo $this->codeBlock($response_body, 'json');
+                    }
+
+                    echo PHP_EOL . '---' . PHP_EOL;
                 }
 
-                echo PHP_EOL . '---' . PHP_EOL;
+                # 如果没有示例，就输出分割线
+                if ($example_numbers == 0) {
+                    echo PHP_EOL . '---' . PHP_EOL;
+                }
+
+                # 获取缓冲区内容，写入文件
+                $contents = ob_get_clean();
+                file_put_contents($output_path . '/' . $path[$pathCount - 1] . '.md', $contents);
             }
-
-            # 如果没有示例，就输出分割线
-            if ($example_numbers == 0) {
-                echo PHP_EOL . '---' . PHP_EOL;
-            }
-
-            # 获取缓冲区内容，写入文件
-            $contents = ob_get_clean();
-            file_put_contents($output_path . '/' . $path[$pathCount - 1] . '.md', $contents);
         }
+        return true;
+    }
 
+    public function echoTitle($title)
+    {
+        echo '---' . PHP_EOL;
+        echo '{"title": "' . $title . '",' . PHP_EOL;
+    }
+
+    public function echoCategories($categories)
+    {
+        echo '"categories": [' . $categories . ']}' . PHP_EOL;
+        echo '---' . PHP_EOL . PHP_EOL;
     }
 
     /**
@@ -373,9 +432,10 @@ class PostmanToMarkdown
      * @author Bruce 2020-07-29
      *
      */
-    public function echoParamsDesc()
+    public function echoParamsDesc($item)
     {
-        echo '### 1.前端接口文档' . PHP_EOL;
+        echo '---' . PHP_EOL;
+        echo ' "title": "' . $item['name'] . '"' . PHP_EOL;
         echo $this->htag(4, '参数解释，（字母顺序）：');
         echo PHP_EOL . '|字段名|解释|字段名|解释|' . PHP_EOL;
         echo '|--|--|--|--|' . PHP_EOL;
@@ -392,14 +452,3 @@ class PostmanToMarkdown
         echo $descs;
     }
 }
-
-// # 程序命令行调用
-// if (count($argv) !== 3) {
-//     die('args error, please input intput_file and output_file path. example as follow: ' . PHP_EOL . PHP_EOL . 'php .\PostmanToMarkdown.php intput_file.json output_file.md' . PHP_EOL . PHP_EOL);
-// }
-//
-// $intput_file = $argv[1];
-// $output_file = $argv[2];
-// $post = new PostmanToMarkdown();
-// // $post->getAllKeys();
-// $post->getMarkdownDocument($intput_file, $output_file);

@@ -86,7 +86,7 @@ class MarkdownToHtmlCommand extends Command
      */
     protected function getStub()
     {
-        $stub = $stub ?? '/stubs/docs_html.plain.stub';
+        $stub = $stub ?? '/Stubs/ApiDocs/detail_html.plain.stub';
 
         return __DIR__.$stub;
     }
