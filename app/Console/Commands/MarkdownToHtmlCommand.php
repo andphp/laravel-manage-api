@@ -53,6 +53,7 @@ class MarkdownToHtmlCommand extends Command
         foreach ($this->filePaths as $fileName){
             $markdownData = file_get_contents( $fileName);
             $htmlContent = $parsedown->text($markdownData);
+            dd($parsedown->getRightNavigation());
             // 获取 输出地址
             $path = $this->getPath($fileName);
 

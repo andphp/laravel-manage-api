@@ -202,9 +202,18 @@ class PostmanToMarkdown
         # 取第一行的列作为表头 marked by Bruce <2020-07-27 18:00:55>
         $columns_name = array_keys($rows[0]);
         if ($type == 'params') {
-            $columns_name = ['参数名', '示例值', '描述', '类型', '是否必须'];
+            $columns_name = [
+                '参数名',
+                '示例值',
+                '描述',
+                '类型',
+                '是否必须'
+            ];
         } elseif ($type == 'header') {
-            $columns_name = ['参数名', '值'];
+            $columns_name = [
+                '参数名',
+                '值'
+            ];
         }
         // 去掉一些不必显示的
         $title = '|' . implode('|', $columns_name) . '|' . PHP_EOL;
@@ -236,7 +245,8 @@ class PostmanToMarkdown
                         'value'       => $value['value'] ?? '',
                         'description' => $this->descriptionEnum($value['key']),
                         'type'        => is_numeric($value['value']) && strlen($value['value']) < 11 ? 'number' : 'string',
-                        'required'    => $value['required'] ?? '是', # 如果是参数表格，追加必填，手动更改，因为大部分都是必填
+                        'required'    => $value['required'] ?? '是',
+                        # 如果是参数表格，追加必填，手动更改，因为大部分都是必填
                     ];
                 } elseif ($type == 'header') {
                     $value = [
@@ -309,7 +319,7 @@ class PostmanToMarkdown
         foreach ($item as $key => $value) {
             // 多级目录递归
             if (isset($value['item'])) {
-                $this->categories = $this->categories . ', "' . $value['name'].'"';
+                $this->categories = $this->categories . ', "' . $value['name'] . '"';
                 return $this->echoItem($value['item'], $output_file);
             } else {
                 # 跳过copy的
@@ -346,9 +356,12 @@ class PostmanToMarkdown
                 # $this->echoParamsDesc( $this->categories);
 
                 # 输出请求header参数
+                echo $this->htag(3, "Header参数：");
                 if (!empty($value['request']['header'])) {
                     echo $this->table($value['request']['header'], 'header');
                 }
+
+                echo $this->htag(3, "请求参数：【" . $value['request']['body']['mode']. "】");
                 if (isset($value['request']['body']['formdata']) && !empty($value['request']['body']['formdata'])) {
                     echo $this->table($value['request']['body']['formdata'], 'params');
                 }
