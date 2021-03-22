@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'host' => 'http://ladmin.test',
     'method' => 'GET',
     'header' => [
         "key"   => "authorization",

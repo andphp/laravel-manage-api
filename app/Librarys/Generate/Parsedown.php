@@ -20,6 +20,7 @@ class Parsedown
     protected $rightNavigation;
 
     protected $levelArray = [];
+    protected $lastKey = 1;
 
     # ~
 
@@ -48,7 +49,55 @@ class Parsedown
 
     public function getRightNavigation()
     {
-        return $this->levelArray;
+        //<li class="toc-item toc-level-3">
+        //<a class="toc-link" href="#5%BA" data-pjax-state="anchor">
+        //<span class="toc-number">5.</span>
+        // <span class="toc-text">在K8S上部署一个PHP应用程序</span>
+        //</a>
+        //<ol class="toc-child" style="">
+        //<li class="toc-item toc-level-4">
+        //<a class="toc-link active" href="#%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87" data-pjax-state="">
+        //
+        // <span class="toc-text">前期准备</span>
+        //</a>
+        //</li><li class="toc-item toc-level-4">
+        //<a class="toc-link" href="#%E9%83BD" data-pjax-state="">
+        //<span class="toc-number">5.6.</span>
+        // <span class="toc-text">部署Nginx工作负载</span>
+        //</a>
+        //</li>
+        //</ol>
+        //</li>
+
+        // dd($this->levelArray);
+
+        return $this->getLi($this->levelArray);
+    }
+
+    protected function getLi($array,$level = 0)
+    {
+
+        $str = '';
+        if(isset($array['text'])){
+            $str .= '<li class="toc-item toc-level-'.$level.'"><a class="toc-link" href="#'.$array['text'].'" data-pjax-state=""><span class="toc-text">'.$array['text'].'</span></a>';
+        }
+
+        if(isset($array['text']) && isset($array['child'])) {
+            $str .= '<ol class="toc-child" style="">';
+        }
+        if(isset($array['child'])){
+            $level += 1;
+            foreach ($array['child'] as $child){
+                $str .=$this->getLi($child,$level);
+            }
+        }
+        if(isset($array['text']) && isset($array['child'])){
+            $str .= '</ol>';
+        }
+        if(isset($array['text'])){
+            $str .= '</li>';
+        }
+        return $str;
     }
 
     #
@@ -1386,12 +1435,45 @@ class Parsedown
     protected function maxKey($array)
     {
         if(empty($array)){
-            return 0;
+            return  0;
         }
-//        $array[] = 'dd';
-//        $array[] = 'dsd';
-//            dd(max(array_keys($array)));
         return  intval(max(array_keys($array)));
+    }
+
+    // 导航数组
+    protected function makeArray($levelArray,$text,$level = 1,$levelKey = 0)
+    {
+
+        if($level > $levelKey){
+
+            $levelKey += 1;
+            $this->lastKey = $levelKey;
+
+            if($this->lastKey >= $level){
+                $this->lastKey = $level;
+                if(!isset($levelArray['child'])){
+                    $levelArray['child'][] = array();
+                    $key = 0;
+                }else{
+                    $key = count($levelArray['child']);
+                }
+                if(!isset($levelArray['child'][$key])){
+                    $levelArray['child'][$key] = array();
+                }
+            }else{
+                if(!isset($levelArray['child'])){
+                    $levelArray['child'][] = array();
+                }
+                $key = $this->maxKey($levelArray['child']);
+            }
+
+            $levelArray['child'][$key] = $this->makeArray($levelArray['child'][$key],$text,$level,$levelKey);
+
+        }else{
+            $levelArray['text'] = $text;
+        }
+        return $levelArray;
+
     }
 
     #
@@ -1403,41 +1485,7 @@ class Parsedown
         $markup = '<'.$Element['name'];
         if(preg_match('/[Hh][1-6]/',$Element['name'])){ //匹配
             $num = (int)substr($Element['name'],-1);
-            switch ($num){
-                case 1:
-                    $this->levelArray[]['text'] = $Element['text'];
-                    break;
-                case 2:
-                    $level1Key = $this->maxKey($this->levelArray);
-                    $this->levelArray[$level1Key]['child'][]['text'] = $Element['text'];
-                    break;
-                case 3:
-                    $level1Key = $this->maxKey($this->levelArray);
-                    $level2Key = $this->maxKey($this->levelArray[$level1Key]['child']);
-                    $this->levelArray[$level1Key]['child'][$level2Key]['child'][]['text'] = $Element['text'];
-                    break;
-                case 4:
-                    $level1Key = $this->maxKey($this->levelArray);
-                    $level2Key = $this->maxKey($this->levelArray[$level1Key]['child']);
-                    $level3Key = $this->maxKey($this->levelArray[$level1Key]['child'][$level2Key]['child']);
-                    $this->levelArray[$level1Key]['child'][$level2Key]['child'][$level3Key]['child'][]['text'] = $Element['text'];
-                    break;
-                case 5:
-                    $level1Key = $this->maxKey($this->levelArray);
-                    $level2Key = $this->maxKey($this->levelArray[$level1Key]['child']);
-                    $level3Key = $this->maxKey($this->levelArray[$level1Key]['child'][$level2Key]['child']);
-                    $level4Key = $this->maxKey($this->levelArray[$level1Key]['child'][$level2Key]['child'][$level3Key]['child']);
-                    $this->levelArray[$level1Key]['child'][$level2Key]['child'][$level3Key]['child'][$level4Key]['child'][]['text'] = $Element['text'];
-                    break;
-                case 6:
-                    $level1Key = $this->maxKey($this->levelArray);
-                    $level2Key = $this->maxKey($this->levelArray[$level1Key]['child']);
-                    $level3Key = $this->maxKey($this->levelArray[$level1Key]['child'][$level2Key]['child']);
-                    $level4Key = $this->maxKey($this->levelArray[$level1Key]['child'][$level2Key]['child'][$level3Key]['child']);
-                    $level5Key = $this->maxKey($this->levelArray[$level1Key]['child'][$level2Key]['child'][$level3Key]['child'][$level4Key]['child']);
-                    $this->levelArray[$level1Key]['child'][$level2Key]['child'][$level3Key]['child'][$level4Key]['child'][$level5Key]['child'][]['text'] = $Element['text'];
-                    break;
-            }
+            $this->levelArray = $this->makeArray($this->levelArray,$Element['text'],$num);
             $markup .= ' id="'.$Element['text'].'"> <a href="#'.$Element['text'].'" class="headerlink" title="'.$Element['text'].'" data-pjax-state=""></a';
         }
 
