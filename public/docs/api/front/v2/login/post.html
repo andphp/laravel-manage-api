@@ -16,91 +16,91 @@
     <link rel="stylesheet" href="/static/apa/docs/detail/jquery.fancybox.min.css">
 
     <script>var GLOBAL_CONFIG = {
-        root: '/',
-        algolia: undefined,
-        localSearch: undefined,
-        translate: {
-            "defaultEncoding": 2,
-            "translateDelay": 0,
-            "msgToTraditionalChinese": "繁",
-            "msgToSimplifiedChinese": "简"
-        },
-        noticeOutdate: undefined,
-        highlight: {"plugin": "highlighjs", "highlightCopy": true, "highlightLang": true},
-        copy: {
-            success: '复制成功',
-            error: '复制错误',
-            noSupport: '浏览器不支持'
-        },
-        relativeDate: {
-            homepage: true,
-            post: false
-        },
-        runtime: '',
-        date_suffix: {
-            just: '刚刚',
-            min: '分钟前',
-            hour: '小时前',
-            day: '天前',
-            month: '个月前'
-        },
-        copyright: {
-            "limitCount": 100,
-            "languages": {
-                "author": "作者: Da Xiong",
-                "link": "链接: ",
-                "source": "来源: AndPHP",
-                "info": "著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"
-            }
-        },
-        ClickShowText: undefined,
-        lightbox: 'fancybox',
-        Snackbar: undefined,
-        justifiedGallery: {
-            js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
-            css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
-        },
-        isPhotoFigcaption: false,
-        islazyload: false,
-        isanchor: true
+      root: '/',
+      algolia: undefined,
+      localSearch: undefined,
+      translate: {
+        "defaultEncoding": 2,
+        "translateDelay": 0,
+        "msgToTraditionalChinese": "繁",
+        "msgToSimplifiedChinese": "简"
+      },
+      noticeOutdate: undefined,
+      highlight: {"plugin": "highlighjs", "highlightCopy": true, "highlightLang": true},
+      copy: {
+        success: '复制成功',
+        error: '复制错误',
+        noSupport: '浏览器不支持'
+      },
+      relativeDate: {
+        homepage: true,
+        post: false
+      },
+      runtime: '',
+      date_suffix: {
+        just: '刚刚',
+        min: '分钟前',
+        hour: '小时前',
+        day: '天前',
+        month: '个月前'
+      },
+      copyright: {
+        "limitCount": 100,
+        "languages": {
+          "author": "作者: Da Xiong",
+          "link": "链接: ",
+          "source": "来源: AndPHP",
+          "info": "著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"
+        }
+      },
+      ClickShowText: undefined,
+      lightbox: 'fancybox',
+      Snackbar: undefined,
+      justifiedGallery: {
+        js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+        css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+      },
+      isPhotoFigcaption: false,
+      islazyload: false,
+      isanchor: true
     };
 
     var saveToLocal = {
-        set: function setWithExpiry(key, value, ttl) {
-            const now = new Date()
-            const expiryDay = ttl * 86400000
-            const item = {
-                value: value,
-                expiry: now.getTime() + expiryDay,
-            }
-            localStorage.setItem(key, JSON.stringify(item))
-        },
-
-        get: function getWithExpiry(key) {
-            const itemStr = localStorage.getItem(key)
-
-            if (!itemStr) {
-                return undefined
-            }
-            const item = JSON.parse(itemStr)
-            const now = new Date()
-
-            if (now.getTime() > item.expiry) {
-                localStorage.removeItem(key)
-                return undefined
-            }
-            return item.value
+      set: function setWithExpiry(key, value, ttl) {
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
         }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
     }
     </script>
     <script id="config_change">
-        var GLOBAL_CONFIG_SITE = {
-            isPost: true,
-            isHome: false,
-            isHighlightShrink: false,
-            isToc: true,
-            postUpdate: '2020-11-13 22:07:20'
-        }
+      var GLOBAL_CONFIG_SITE = {
+        isPost: true,
+        isHome: false,
+        isHighlightShrink: false,
+        isToc: true,
+        postUpdate: '2020-11-13 22:07:20'
+      }
     </script>
     <noscript>
         <style type="text/css">
@@ -119,62 +119,62 @@
         </style>
     </noscript>
     <script>
-        (function () {
-            window.activateDarkMode = function () {
-                document.documentElement.setAttribute('data-theme', 'dark')
-                if (document.querySelector('meta[name="theme-color"]') !== null) {
-                    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-                }
+      (function () {
+        window.activateDarkMode = function () {
+          document.documentElement.setAttribute('data-theme', 'dark')
+          if (document.querySelector('meta[name="theme-color"]') !== null) {
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+          }
+        }
+        window.activateLightMode = function () {
+          document.documentElement.setAttribute('data-theme', 'light')
+          if (document.querySelector('meta[name="theme-color"]') !== null) {
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+          }
+        }
+        const autoChangeMode = 'false'
+        const t = saveToLocal.get('theme')
+        if (autoChangeMode === '1') {
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
             }
-            window.activateLightMode = function () {
-                document.documentElement.setAttribute('data-theme', 'light')
-                if (document.querySelector('meta[name="theme-color"]') !== null) {
-                    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-                }
-            }
-            const autoChangeMode = 'false'
-            const t = saveToLocal.get('theme')
-            if (autoChangeMode === '1') {
-                const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
-                const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
-                const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
-                const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
-                if (t === undefined) {
-                    if (isLightMode) activateLightMode()
-                    else if (isDarkMode) activateDarkMode()
-                    else if (isNotSpecified || hasNoSupport) {
-                        const now = new Date()
-                        const hour = now.getHours()
-                        const isNight = hour <= 6 || hour >= 18
-                        isNight ? activateDarkMode() : activateLightMode()
-                    }
-                    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
-                        if (saveToLocal.get('theme') === undefined) {
-                            e.matches ? activateDarkMode() : activateLightMode()
-                        }
-                    })
-                } else if (t === 'light') activateLightMode()
-                else activateDarkMode()
-            } else if (autoChangeMode === '2') {
-                const now = new Date()
-                const hour = now.getHours()
-                const isNight = hour <= 6 || hour >= 18
-                if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
-                else if (t === 'light') activateLightMode()
-                else activateDarkMode()
-            } else {
-                if (t === 'dark') activateDarkMode()
-                else if (t === 'light') activateLightMode()
-            }
-            const asideStatus = saveToLocal.get('aside-status')
-            if (asideStatus !== undefined) {
-                if (asideStatus === 'hide') {
-                    document.documentElement.classList.add('hide-aside')
-                } else {
-                    document.documentElement.classList.remove('hide-aside')
-                }
-            }
-        })()
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        } else if (autoChangeMode === '2') {
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        } else {
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        }
+        const asideStatus = saveToLocal.get('aside-status')
+        if (asideStatus !== undefined) {
+          if (asideStatus === 'hide') {
+            document.documentElement.classList.add('hide-aside')
+          } else {
+            document.documentElement.classList.remove('hide-aside')
+          }
+        }
+      })()
     </script>
     <style type="text/css">
         .v[data-class=v] {
@@ -839,21 +839,21 @@
             <span id="menus"> <div class="menus_items"> <a class="site-page"
                                                            href="http://andphp.com/"
                                                            data-pjax-state=""><i
-                class="fa-fw fas fa-home"></i><span> 生活要有态度</span></a></div></span>
+                    class="fa-fw fas fa-home"></i><span> 生活要有态度</span></a></div></span>
         </nav>
         <div id="post-info">
             <h1 class="post-title">PHP从入门到放弃</h1>
             <div id="post-meta">
                 <div class="meta-firstline"><span class="post-meta-date"><i
-                    class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time
-                    class="post-meta-date-created" datetime="2020-11-13T04:20:33.000Z"
-                    title="发表于 2020-11-13 12:20:33">2020-11-13</time><span class="post-meta-separator">|</span><i
-                    class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time
-                    class="post-meta-date-updated" datetime="2020-11-13T14:07:20.180Z"
-                    title="更新于 2020-11-13 22:07:20">2020-11-13</time></span></div>
+                        class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time
+                        class="post-meta-date-created" datetime="2020-11-13T04:20:33.000Z"
+                        title="发表于 2020-11-13 12:20:33">2020-11-13</time><span class="post-meta-separator">|</span><i
+                        class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time
+                        class="post-meta-date-updated" datetime="2020-11-13T14:07:20.180Z"
+                        title="更新于 2020-11-13 22:07:20">2020-11-13</time></span></div>
                 <div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i
-                    class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span
-                    id="busuanzi_value_page_pv">1</span></span></div>
+                        class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span
+                        id="busuanzi_value_page_pv">1</span></span></div>
             </div>
         </div>
     </header>
@@ -861,171 +861,165 @@
 <main class="layout" id="content-inner">
     <div id="post">
         <article class="post-content" id="article-container">
-            <h3 id="3请求URI:"><a href="#3请求URI:" class="headerlink" title="3请求URI:" data-pjax-state=""></a>3请求URI:</h3>
-            <pre><code class="language-http">http://newiot.test/api/front/v2/login/post</code></pre>
-            <h4 id="3.1.1sssssss:"><a href="#3.1.1sssssss:" class="headerlink" title="3.1.1sssssss:"
-                                      data-pjax-state=""></a>3.1.1sssssss:</h4>
-            <blockquote>
-                <p>Description:获取社区下所有楼栋</p>
-            </blockquote>
-            <h5 id="3.1.1.1saaaaa:"><a href="#3.1.1.1saaaaa:" class="headerlink" title="3.1.1.1saaaaa:"
-                                       data-pjax-state=""></a>3.1.1.1saaaaa:</h5>
-            <h3 id="3.2Header参数："><a href="#3.2Header参数：" class="headerlink" title="3.2Header参数："
-                                     data-pjax-state=""></a>3.2Header参数：</h3>
-            <table>
-                <thead>
-                <tr>
-                    <th>参数名</th>
-                    <th>值</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td></td>
-                    <td>Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3....</td>
-                </tr>
-                </tbody>
-            </table>
-            <h3 id="3.3请求参数：【formdata】"><a href="#3.3请求参数：【formdata】" class="headerlink" title="3.3请求参数：【formdata】"
-                                           data-pjax-state=""></a>3.3请求参数：【formdata】</h3>
-            <h4 id="3.3.4测试1"><a href="#3.3.4测试1" class="headerlink" title="3.3.4测试1" data-pjax-state=""></a>3.3.4测试1
-            </h4>
-            <h1 id="测试2"><a href="#测试2" class="headerlink" title="测试2" data-pjax-state=""></a>测试2</h1>
-            <table>
-                <thead>
-                <tr>
-                    <th>参数名</th>
-                    <th>示例值</th>
-                    <th>描述</th>
-                    <th>类型</th>
-                    <th>是否必须</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>version</td>
-                    <td>v1</td>
-                    <td></td>
-                    <td>string</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>method</td>
-                    <td>signUp.admin.login</td>
-                    <td></td>
-                    <td>string</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>username</td>
-                    <td>admin</td>
-                    <td></td>
-                    <td>string</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>password</td>
-                    <td>123456</td>
-                    <td>密码</td>
-                    <td>number</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>platform</td>
-                    <td>ios3443</td>
-                    <td></td>
-                    <td>string</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>format</td>
-                    <td>json</td>
-                    <td></td>
-                    <td>string</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>community_building_id</td>
-                    <td>17</td>
-                    <td></td>
-                    <td>number</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>building_id</td>
-                    <td>89</td>
-                    <td></td>
-                    <td>number</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>gate_number</td>
-                    <td>2</td>
-                    <td></td>
-                    <td>number</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>id</td>
-                    <td>49</td>
-                    <td></td>
-                    <td>number</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>size</td>
-                    <td>2</td>
-                    <td></td>
-                    <td>number</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>phone</td>
-                    <td>13983854512</td>
-                    <td></td>
-                    <td>string</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>api_token</td>
-                    <td>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIiL....</td>
-                    <td>身份认证token</td>
-                    <td>string</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>password</td>
-                    <td>123456</td>
-                    <td>密码</td>
-                    <td>number</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>ids</td>
-                    <td>12</td>
-                    <td></td>
-                    <td>number</td>
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
-            <h2 id="获取社区下所有楼栋(共0个示例)"><a href="#获取社区下所有楼栋(共0个示例)" class="headerlink" title="获取社区下所有楼栋(共0个示例)"
-                                         data-pjax-state=""></a>获取社区下所有楼栋(共0个示例)</h2>
-            <hr/>
+            <h3 id="3请求URI:"> <a href="#3请求URI:" class="headerlink" title="3请求URI:" data-pjax-state=""></a>3请求URI:</h3>
+<pre><code class="language-http">http://newiot.test/api/front/v2/login/post</code></pre>
+<h4 id="3.1.1sssssss:"> <a href="#3.1.1sssssss:" class="headerlink" title="3.1.1sssssss:" data-pjax-state=""></a>3.1.1sssssss:</h4>
+<blockquote>
+<p>Description:获取社区下所有楼栋</p>
+</blockquote>
+<h5 id="3.1.1.1saaaaa:"> <a href="#3.1.1.1saaaaa:" class="headerlink" title="3.1.1.1saaaaa:" data-pjax-state=""></a>3.1.1.1saaaaa:</h5>
+<h3 id="3.2Header参数："> <a href="#3.2Header参数：" class="headerlink" title="3.2Header参数：" data-pjax-state=""></a>3.2Header参数：</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3....</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3.3请求参数：【formdata】"> <a href="#3.3请求参数：【formdata】" class="headerlink" title="3.3请求参数：【formdata】" data-pjax-state=""></a>3.3请求参数：【formdata】</h3>
+<h4 id="3.3.4测试1"> <a href="#3.3.4测试1" class="headerlink" title="3.3.4测试1" data-pjax-state=""></a>3.3.4测试1</h4>
+<h1 id="测试2"> <a href="#测试2" class="headerlink" title="测试2" data-pjax-state=""></a>测试2</h1>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>示例值</th>
+<th>描述</th>
+<th>类型</th>
+<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>version</td>
+<td>v1</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>method</td>
+<td>signUp.admin.login</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>username</td>
+<td>admin</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>password</td>
+<td>123456</td>
+<td>密码</td>
+<td>number</td>
+<td></td>
+</tr>
+<tr>
+<td>platform</td>
+<td>ios3443</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>format</td>
+<td>json</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>community_building_id</td>
+<td>17</td>
+<td></td>
+<td>number</td>
+<td></td>
+</tr>
+<tr>
+<td>building_id</td>
+<td>89</td>
+<td></td>
+<td>number</td>
+<td></td>
+</tr>
+<tr>
+<td>gate_number</td>
+<td>2</td>
+<td></td>
+<td>number</td>
+<td></td>
+</tr>
+<tr>
+<td>id</td>
+<td>49</td>
+<td></td>
+<td>number</td>
+<td></td>
+</tr>
+<tr>
+<td>size</td>
+<td>2</td>
+<td></td>
+<td>number</td>
+<td></td>
+</tr>
+<tr>
+<td>phone</td>
+<td>13983854512</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>api_token</td>
+<td>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIiL....</td>
+<td>身份认证token</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>password</td>
+<td>123456</td>
+<td>密码</td>
+<td>number</td>
+<td></td>
+</tr>
+<tr>
+<td>ids</td>
+<td>12</td>
+<td></td>
+<td>number</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="获取社区下所有楼栋(共0个示例)"> <a href="#获取社区下所有楼栋(共0个示例)" class="headerlink" title="获取社区下所有楼栋(共0个示例)" data-pjax-state=""></a>获取社区下所有楼栋(共0个示例)</h2>
+<hr />
         </article>
         <div class="post-copyright">
             <div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span
-                class="post-copyright-info"><a href="mailto:undefined" data-pjax-state="">Da Xiong</a></span>
+                    class="post-copyright-info"><a href="mailto:undefined" data-pjax-state="">Da Xiong</a></span>
             </div>
             <div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span
-                class="post-copyright-info"><a
-                href="https://www.andphp.com/2020/11/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%20PHP%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"
-                data-pjax-state="">https://www.andphp.com/2020/11/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%20PHP%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</a></span>
+                    class="post-copyright-info"><a
+                    href="https://www.andphp.com/2020/11/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%20PHP%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/"
+                    data-pjax-state="">https://www.andphp.com/2020/11/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%20PHP%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/</a></span>
             </div>
             <div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span
-                class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a
-                href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a
-                href="https://www.andphp.com/" target="_blank">AndPHP</a>！</span></div>
+                    class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a
+                    href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a
+                    href="https://www.andphp.com/" target="_blank">AndPHP</a>！</span></div>
         </div>
     </div>
     <div class="aside_content" id="aside_content">
@@ -1059,7 +1053,7 @@
         <div class="card-widget card-announcement">
             <div class="card-content">
                 <div class="item-headline"><i
-                    class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div>
+                        class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div>
                 <div class="announcement_content">This is my Blog</div>
             </div>
         </div>
@@ -1069,40 +1063,13 @@
                     <div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div>
                     <div class="toc-content" progress-percentage="65">
                         <ol class="toc">
-                            <li class="toc-item toc-level-3">
-                                <a class="toc-link" href="#3请求URI:" data-pjax-state=""><span class="toc-text">3请求URI:</span></a>
-                                <ol class="toc-child" style="">
-                                    <li class="toc-item toc-level-4">
-                                        <a class="toc-link" href="#3.1.1sssssss:" data-pjax-state=""><span class="toc-text">3.1.1sssssss:</span></a>
-                                        <ol class="toc-child" style="">
-                                            <li class="toc-item toc-level-5">
-                                                <a class="toc-link" href="#3.1.1.1saaaaa:" data-pjax-state=""><span class="toc-text">3.1.1.1saaaaa:</span></a>
-                                            </li>
-                                        </ol>
-                                    </li>
-                                </ol>
-                            </li>
-                            <li class="toc-item toc-level-3">
-                                <a class="toc-link" href="#3.2Header参数：" data-pjax-state=""><span class="toc-text">3.2Header参数：</span></a>
-                            </li>
-                            <li class="toc-item toc-level-3">
-                                <a class="toc-link" href="#3.3请求参数：【formdata】" data-pjax-state=""><span class="toc-text">3.3请求参数：【formdata】</span></a>
-                                <ol class="toc-child" style="">
-                                    <li class="toc-item toc-level-4">
-                                        <a class="toc-link" href="#3.3.4测试1" data-pjax-state=""><span class="toc-text">3.3.4测试1</span></a>
-                                    </li>
-                                </ol>
-                            </li>
-                            <li class="toc-item toc-level-1">
-                                <a class="toc-link" href="#测试2" data-pjax-state=""><span class="toc-text">测试2</span></a>
-                                <ol class="toc-child" style="">
-                                    <li class="toc-item toc-level-2">
-                                        <a class="toc-link" href="#获取社区下所有楼栋(共0个示例)" data-pjax-state=""><span class="toc-text">获取社区下所有楼栋(共0个示例)</span></a>
-                                    </li>
-                                </ol>
-                            </li>
+                            <li class="toc-item toc-level-3"><a class="toc-link" href="#3请求URI:" data-pjax-state=""><span class="toc-text">3请求URI:</span></a><ol class="toc-child" style=""><li class="toc-item toc-level-4"><a class="toc-link" href="#3.1.1ss
+sssss:" data-pjax-state=""><span class="toc-text">3.1.1sssssss:</span></a><ol class="toc-child" style=""><li class="toc-item toc-level-5"><a class="toc-link" href="#3.1.1.1saaaaa:" data-pjax-state=""><span class="toc-text">3.1.1.1sa
+aaaa:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3.2Header参数：" data-pjax-state=""><span class="toc-text">3.2Header参数：</span></a></li><li class="toc-item toc-level-3"><a class
+                                                                                                                                                                                                                                 ="toc-link" href="#3.3请求参数：【formdata】" data-pjax-state=""><span class="toc-text">3.3请求参数：【formdata】</span></a><ol class="toc-child" style=""><li class="toc-item toc-level-4"><a class="toc-link" href="#3.3.4测试1" data-
+                                                                                                                                                                                                                                                                                                                                                                                                                  pjax-state=""><span class="toc-text">3.3.4测试1</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#测试2" data-pjax-state=""><span class="toc-text">测试2</span></a><ol class="toc-child" style=""><li
+                            class="toc-item toc-level-2"><a class="toc-link" href="#获取社区下所有楼栋(共0个示例)" data-pjax-state=""><span class="toc-text">获取社区下所有楼栋(共0个示例)</span></a></li></ol></li>
                         </ol>
-
                     </div>
                 </div>
             </div>
@@ -1149,8 +1116,8 @@
                         <div class="aside-list-item"><a class="thumbnail"
                                                         href="http://andphp.com/2020/11/13/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%AE%89%E8%A3%85Docker/"
                                                         title="CentOS环境配置安装Docker" data-pjax-state=""><img
-                            src="/static/apa/docs/detail/default.jpg"
-                            alt="CentOS环境配置安装Docker"></a>
+                                src="/static/apa/docs/detail/default.jpg"
+                                alt="CentOS环境配置安装Docker"></a>
                             <div class="content"><a class="title"
                                                     href="http://andphp.com/2020/11/13/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%AE%89%E8%A3%85Docker/"
                                                     title="CentOS环境配置安装Docker"
@@ -1171,8 +1138,8 @@
         <div class="copyright">©2020 By Da Xiong</div>
         <div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener"
                                                        href="https://hexo.io/">Hexo</a><span
-            class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener"
-                                                                href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a>
+                class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener"
+                                                                    href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a>
         </div>
         <div class="footer_custom_text">Hi, welcome to <a target="_blank" rel="noopener" href="http://andphp.com/">AndPHP</a>!
         </div>
@@ -1201,18 +1168,18 @@
     <script src="/static/apa/docs/detail/tw_cn.js"></script>
     <script src="/static/apa/docs/detail/jquery.fancybox.min.js"></script>
     <script>var preloader = {
-        endLoading: () => {
-            document.body.style.overflow = 'auto';
-            document.getElementById('loading-box').classList.add("loaded")
-        },
-        initLoading: () => {
-            document.body.style.overflow = '';
-            document.getElementById('loading-box').classList.remove("loaded")
+      endLoading: () => {
+        document.body.style.overflow = 'auto';
+        document.getElementById('loading-box').classList.add("loaded")
+      },
+      initLoading: () => {
+        document.body.style.overflow = '';
+        document.getElementById('loading-box').classList.remove("loaded")
 
-        }
+      }
     }
     window.addEventListener('load', () => {
-        preloader.endLoading()
+      preloader.endLoading()
     })</script>
 
     <script defer="defer" id="ribbon" src="/static/apa/docs/detail/canvas-ribbon.min.js" size="150" alpha="0.6"
