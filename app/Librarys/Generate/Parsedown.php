@@ -67,7 +67,7 @@ class Parsedown
         //</a>
         //</li>
         //</ol>
-        //</li>
+        //</li> DummyFieldRightNavigation
 
         // dd($this->levelArray);
 
@@ -79,7 +79,7 @@ class Parsedown
 
         $str = '';
         if(isset($array['text'])){
-            $str .= '<li class="toc-item toc-level-'.$level.'"><a class="toc-link" href="#'.$array['text'].'" data-pjax-state=""><span class="toc-text">'.$array['text'].'</span></a>';
+            $str .= '<li class="toc-item toc-level-'.$level.'"><a class="toc-link" href="#'.$array['text'].'" data-pjax-state="anchor"><span class="toc-text">'.$array['text'].'</span></a>';
         }
 
         if(isset($array['text']) && isset($array['child'])) {

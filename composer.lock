@@ -4,8 +4,62 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "11448ede3eee3bd2bd55b0dd6a775d1c",
+    "content-hash": "ef85913c82f26c264aab6f6b48d12d3a",
     "packages": [
+        {
+            "name": "andphp/docs",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/andphp/apidocs.git",
+                "reference": "5e3ef63f6130f61536d44cdd313e67c2dd1c484b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/andphp/apidocs/zipball/5e3ef63f6130f61536d44cdd313e67c2dd1c484b",
+                "reference": "5e3ef63f6130f61536d44cdd313e67c2dd1c484b",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "laravel/framework": "^8.12"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "\\AndPHP\\ApiDocs\\ApiDocsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "AndPHP\\ApiDocs\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Da Xiong",
+                    "email": "10000@andphp.com"
+                }
+            ],
+            "description": "dev",
+            "support": {
+                "issues": "https://github.com/andphp/apidocs/issues",
+                "source": "https://github.com/andphp/apidocs/tree/master"
+            },
+            "time": "2021-03-23T10:06:29+00:00"
+        },
         {
             "name": "asm89/stack-cors",
             "version": "v2.0.2",
@@ -8221,7 +8275,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "andphp/docs": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

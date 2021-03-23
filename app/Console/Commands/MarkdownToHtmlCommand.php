@@ -52,13 +52,18 @@ class MarkdownToHtmlCommand extends Command
         $parsedown = new Parsedown();
         foreach ($this->filePaths as $fileName){
             $markdownData = file_get_contents( $fileName);
-            $htmlContent = $parsedown->text($markdownData);
-            dd($parsedown->getRightNavigation());
+            $filterMarkdownData = $this->filterConfig($markdownData);
+            $htmlContent = $parsedown->text($filterMarkdownData);
+            //DummyFieldRightNavigation
+            $rightNavigation= $parsedown->getRightNavigation();
+
             // 获取 输出地址
             $path = $this->getPath($fileName);
 
+
+            $stub = $this->files->get($this->getStub());
             // 替换模板
-            $this->files->put($path, $this->buildHtml($htmlContent));
+            $this->files->put($path, $this->buildHtml($htmlContent,$stub)->buildRightNavigation($rightNavigation,$stub));
 
             $this->info($path.' created successfully.');
         }
@@ -93,11 +98,28 @@ class MarkdownToHtmlCommand extends Command
     }
 
 
-
-    protected function buildHtml($htmlContent)
+    protected function filterConfig($stub)
     {
-        $stub = $this->files->get($this->getStub());
-        return str_replace('DummyFieldContent', $htmlContent, $stub);
+
+        $substr = substr($stub, strpos($stub, '---')+3,strpos($stub, '---',1)-3);
+
+        // 赋值配置文件
+
+        //过滤
+        return substr($stub,strlen($substr)+6);
+
+    }
+
+    protected function buildHtml($htmlContent,&$stub)
+    {
+
+        $stub =  str_replace('DummyFieldContent', $htmlContent, $stub);
+        return $this;
+    }
+
+    protected function buildRightNavigation($RightNavigation,$stub)
+    {
+        return str_replace('DummyFieldRightNavigation', $RightNavigation, $stub);
     }
 
 

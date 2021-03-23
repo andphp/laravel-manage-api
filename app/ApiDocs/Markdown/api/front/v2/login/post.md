@@ -1,26 +1,29 @@
+---
+{
+"title": "获取社区下所有楼栋",
+"categories": ["iot-beta", "rrrrr"]
+}
+---
 
 
-### 3请求URI:
+### 请求URI:
+
+#### 请求URI4:
+
 
 ```http
 http://newiot.test/api/front/v2/login/post
 ```
-#### 3.1.1sssssss:
+
 > Description:获取社区下所有楼栋
 
-##### 3.1.1.1saaaaa:
-
-### 3.2Header参数：
+### Header参数：
 
 |参数名|值|
 |--|--|
 |  | Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3.... |
 
-### 3.3请求参数：【formdata】
-
-#### 3.3.4测试1
-
-# 测试2
+### 请求参数：【formdata】
 
 |参数名|示例值|描述|类型|是否必须|
 |--|--|--|--|--|
@@ -40,6 +43,95 @@ http://newiot.test/api/front/v2/login/post
 | password | 123456 | 密码 | number |  |
 | ids | 12 |  | number |  |
 
-## 获取社区下所有楼栋(共0个示例)
+#### 获取社区下所有楼栋(共0个示例)
 
 ---
+
+|参数名|示例值|描述|类型|是否必须|
+|--|--|--|--|--|
+| version | v1 |  | string |  |
+| method | signUp.admin.login |  | string |  |
+| username | admin |  | string |  |
+| password | 123456 | 密码 | number |  |
+| platform | ios3443 |  | string |  |
+| format | json |  | string |  |
+| community_building_id | 17 |  | number |  |
+| building_id | 89 |  | number |  |
+| gate_number | 2 |  | number |  |
+| id | 49 |  | number |  |
+| size | 2 |  | number |  |
+| phone | 13983854512 |  | string |  |
+| api_token | eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIiL.... | 身份认证token | string |  |
+| password | 123456 | 密码 | number |  |
+| ids | 12 |  | number |  |
+
+#### 请求URI42:
+
+```
+dsdfdsfdsfdsddsfd fdd
+```
+
+##### 请求URI5:
+
+|参数名|示例值|描述|类型|是否必须|
+|--|--|--|--|--|
+| version | v1 |  | string |  |
+| method | signUp.admin.login |  | string |  |
+| username | admin |  | string |  |
+| password | 123456 | 密码 | number |  |
+| platform | ios3443 |  | string |  |
+| format | json |  | string |  |
+| community_building_id | 17 |  | number |  |
+| building_id | 89 |  | number |  |
+| gate_number | 2 |  | number |  |
+| id | 49 |  | number |  |
+| size | 2 |  | number |  |
+| phone | 13983854512 |  | string |  |
+| api_token | eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIiL.... | 身份认证token | string |  |
+| password | 123456 | 密码 | number |  |
+| ids | 12 |  | number |  |
+
+### 请求URI45:
+
+> dsfdsfdsfdssss
+
+|参数名|示例值|描述|类型|是否必须|
+|--|--|--|--|--|
+| version | v1 |  | string |  |
+| method | signUp.admin.login |  | string |  |
+| username | admin |  | string |  |
+| password | 123456 | 密码 | number |  |
+| platform | ios3443 |  | string |  |
+| format | json |  | string |  |
+| community_building_id | 17 |  | number |  |
+| building_id | 89 |  | number |  |
+| gate_number | 2 |  | number |  |
+| id | 49 |  | number |  |
+| size | 2 |  | number |  |
+| phone | 13983854512 |  | string |  |
+| api_token | eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIiL.... | 身份认证token | string |  |
+| password | 123456 | 密码 | number |  |
+| ids | 12 |  | number |  |
+
+##### 请求URI432:
+
+
+|参数名|示例值|描述|类型|是否必须|
+|--|--|--|--|--|
+| version | v1 |  | string |  |
+| method | signUp.admin.login |  | string |  |
+| username | admin |  | string |  |
+| password | 123456 | 密码 | number |  |
+| platform | ios3443 |  | string |  |
+| format | json |  | string |  |
+| community_building_id | 17 |  | number |  |
+| building_id | 89 |  | number |  |
+| gate_number | 2 |  | number |  |
+| id | 49 |  | number |  |
+| size | 2 |  | number |  |
+| phone | 13983854512 |  | string |  |
+| api_token | eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIiL.... | 身份认证token | string |  |
+| password | 123456 | 密码 | number |  |
+| ids | 12 |  | number |  |
+
+sdfsdfsdeswresfre
