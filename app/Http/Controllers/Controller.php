@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use AndPHP\OutPut\OutPut;
 use App\Constant\Error;
-use App\Traits\OutPut;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;

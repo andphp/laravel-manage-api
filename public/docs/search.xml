@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>获取社区下所有楼栋</title>
+      <link href="/docs/api/front/v2/login/post/"/>
+      <url>/docs/api/front/v2/login/post/</url>
+      
+        <content type="html"><![CDATA[<h3 id="请求URI"><a href="#请求URI" class="headerlink" title="请求URI:"></a>请求URI:</h3><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">http://newiot.test/api/front/v2/login/post</span></span><br></pre></td></tr></table></figure><blockquote><p>Description:获取社区下所有楼栋</p></blockquote><h3 id="Header参数："><a href="#Header参数：" class="headerlink" title="Header参数："></a>Header参数：</h3><table><thead><tr><th>参数名</th><th>值</th></tr></thead><tbody><tr><td></td><td>Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3….</td></tr></tbody></table><h3 id="请求参数：【formdata】"><a href="#请求参数：【formdata】" class="headerlink" title="请求参数：【formdata】"></a>请求参数：【formdata】</h3><table><thead><tr><th>参数名</th><th>示例值</th><th>描述</th><th>类型</th><th>是否必须</th></tr></thead><tbody><tr><td>version</td><td>v1</td><td></td><td>string</td><td></td></tr><tr><td>method</td><td>signUp.admin.login</td><td></td><td>string</td><td></td></tr><tr><td>username</td><td>admin</td><td></td><td>string</td><td></td></tr><tr><td>password</td><td>123456</td><td>密码</td><td>number</td><td></td></tr><tr><td>platform</td><td>ios3443</td><td></td><td>string</td><td></td></tr><tr><td>format</td><td>json</td><td></td><td>string</td><td></td></tr><tr><td>community_building_id</td><td>17</td><td></td><td>number</td><td></td></tr><tr><td>building_id</td><td>89</td><td></td><td>number</td><td></td></tr><tr><td>gate_number</td><td>2</td><td></td><td>number</td><td></td></tr><tr><td>id</td><td>49</td><td></td><td>number</td><td></td></tr><tr><td>size</td><td>2</td><td></td><td>number</td><td></td></tr><tr><td>phone</td><td>13983854512</td><td></td><td>string</td><td></td></tr><tr><td>api_token</td><td>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIiL….</td><td>身份认证token</td><td>string</td><td></td></tr><tr><td>password</td><td>123456</td><td>密码</td><td>number</td><td></td></tr><tr><td>ids</td><td>12</td><td></td><td>number</td><td></td></tr></tbody></table><h4 id="获取社区下所有楼栋-共0个示例"><a href="#获取社区下所有楼栋-共0个示例" class="headerlink" title="获取社区下所有楼栋(共0个示例)"></a>获取社区下所有楼栋(共0个示例)</h4><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> iot-beta </category>
+          
+          <category> rrrrr </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>人员列表</title>
+      <link href="/docs/api/agent/v1/community/user/list/"/>
+      <url>/docs/api/agent/v1/community/user/list/</url>
+      
+        <content type="html"><![CDATA[<h3 id="请求URI"><a href="#请求URI" class="headerlink" title="请求URI:"></a>请求URI:</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://newiot.test/api/agent/v1/community/user/list?size=3</span><br></pre></td></tr></table></figure><h3 id="Header参数："><a href="#Header参数：" class="headerlink" title="Header参数："></a>Header参数：</h3><h4 id="人员列表-共0个示例"><a href="#人员列表-共0个示例" class="headerlink" title="人员列表(共0个示例)"></a>人员列表(共0个示例)</h4><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> iot-beta </category>
+          
+          <category> rrrrr </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>获取所有收费类目</title>
+      <link href="/docs/api/agent/v1/service/charge/list/"/>
+      <url>/docs/api/agent/v1/service/charge/list/</url>
+      
+        <content type="html"><![CDATA[<h3 id="请求URI"><a href="#请求URI" class="headerlink" title="请求URI:"></a>请求URI:</h3><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">newiot.test/api/agent/v1/service/charge/list</span></span><br></pre></td></tr></table></figure><blockquote><p>Description:获取所有收费类目</p></blockquote><h3 id="Header参数："><a href="#Header参数：" class="headerlink" title="Header参数："></a>Header参数：</h3><table><thead><tr><th>参数名</th><th>值</th></tr></thead><tbody><tr><td>authorization</td><td>Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3….</td></tr></tbody></table><h3 id="请求参数：【formdata】"><a href="#请求参数：【formdata】" class="headerlink" title="请求参数：【formdata】"></a>请求参数：【formdata】</h3><table><thead><tr><th>参数名</th><th>示例值</th><th>描述</th><th>类型</th><th>是否必须</th></tr></thead><tbody><tr><td>username</td><td>admin</td><td></td><td>string</td><td></td></tr><tr><td>password</td><td>123456</td><td>密码</td><td>number</td><td></td></tr></tbody></table><h4 id="获取所有收费类目-共0个示例"><a href="#获取所有收费类目-共0个示例" class="headerlink" title="获取所有收费类目(共0个示例)"></a>获取所有收费类目(共0个示例)</h4><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> iot-beta </category>
+          
+          <category> rrrrr </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>获取停车场所有列表</title>
+      <link href="/docs/api/agent/v1/service/garage/list/"/>
+      <url>/docs/api/agent/v1/service/garage/list/</url>
+      
+        <content type="html"><![CDATA[<h3 id="请求URI"><a href="#请求URI" class="headerlink" title="请求URI:"></a>请求URI:</h3><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">http://newiot.test/api/agent/v1/service/garage/list</span></span><br></pre></td></tr></table></figure><h3 id="Header参数："><a href="#Header参数：" class="headerlink" title="Header参数："></a>Header参数：</h3><h4 id="获取停车场所有列表-共0个示例"><a href="#获取停车场所有列表-共0个示例" class="headerlink" title="获取停车场所有列表(共0个示例)"></a>获取停车场所有列表(共0个示例)</h4><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> iot-beta </category>
+          
+          <category> rrrrr </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ajax获取业主和水电费缴费信息</title>
+      <link href="/docs/api/agent/v1/service/payment/ajax_otherfee_type/"/>
+      <url>/docs/api/agent/v1/service/payment/ajax_otherfee_type/</url>
+      
+        <content type="html"><![CDATA[<h3 id="请求URI"><a href="#请求URI" class="headerlink" title="请求URI:"></a>请求URI:</h3><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">newiot.test/api/agent/v1/service/payment/ajax_otherfee_type</span></span><br></pre></td></tr></table></figure><h3 id="Header参数："><a href="#Header参数：" class="headerlink" title="Header参数："></a>Header参数：</h3><h3 id="请求参数：【formdata】"><a href="#请求参数：【formdata】" class="headerlink" title="请求参数：【formdata】"></a>请求参数：【formdata】</h3><table><thead><tr><th>参数名</th><th>示例值</th><th>描述</th><th>类型</th><th>是否必须</th></tr></thead><tbody><tr><td>otherfee_type_id</td><td>13</td><td></td><td>number</td><td></td></tr><tr><td>gate_number</td><td>1011</td><td></td><td>number</td><td></td></tr><tr><td>building_id</td><td>102</td><td></td><td>number</td><td></td></tr></tbody></table><h4 id="ajax获取业主和水电费缴费信息-共0个示例"><a href="#ajax获取业主和水电费缴费信息-共0个示例" class="headerlink" title="ajax获取业主和水电费缴费信息(共0个示例)"></a>ajax获取业主和水电费缴费信息(共0个示例)</h4><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> iot-beta </category>
+          
+          <category> rrrrr </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>单元管理[缴费管理]列表</title>
+      <link href="/docs/api/agent/v1/service/payment/list/"/>
+      <url>/docs/api/agent/v1/service/payment/list/</url>
+      
+        <content type="html"><![CDATA[<h3 id="请求URI"><a href="#请求URI" class="headerlink" title="请求URI:"></a>请求URI:</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">newiot.test/api/agent/v1/service/payment/list?search=李</span><br></pre></td></tr></table></figure><blockquote><p>Description:单元管理[缴费管理]列表</p></blockquote><h3 id="Header参数："><a href="#Header参数：" class="headerlink" title="Header参数："></a>Header参数：</h3><table><thead><tr><th>参数名</th><th>值</th></tr></thead><tbody><tr><td>authorization</td><td>Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3….</td></tr></tbody></table><h3 id="请求参数：【raw】"><a href="#请求参数：【raw】" class="headerlink" title="请求参数：【raw】"></a>请求参数：【raw】</h3><table><thead><tr><th>参数名</th><th>示例值</th><th>描述</th><th>类型</th><th>是否必须</th></tr></thead><tbody><tr><td>raw-data</td><td>sdfsd</td><td></td><td>string</td><td></td></tr></tbody></table><h4 id="单元管理-缴费管理-列表-共0个示例"><a href="#单元管理-缴费管理-列表-共0个示例" class="headerlink" title="单元管理[缴费管理]列表(共0个示例)"></a>单元管理[缴费管理]列表(共0个示例)</h4><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> iot-beta </category>
+          
+          <category> rrrrr </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>设置物业费预警到期时间</title>
+      <link href="/docs/api/agent/v1/service/payment/property_warning/"/>
+      <url>/docs/api/agent/v1/service/payment/property_warning/</url>
+      
+        <content type="html"><![CDATA[<h3 id="请求URI"><a href="#请求URI" class="headerlink" title="请求URI:"></a>请求URI:</h3><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">newiot.test/api/agent/v1/service/payment/property_warning</span></span><br></pre></td></tr></table></figure><h3 id="Header参数："><a href="#Header参数：" class="headerlink" title="Header参数："></a>Header参数：</h3><h3 id="请求参数：【formdata】"><a href="#请求参数：【formdata】" class="headerlink" title="请求参数：【formdata】"></a>请求参数：【formdata】</h3><table><thead><tr><th>参数名</th><th>示例值</th><th>描述</th><th>类型</th><th>是否必须</th></tr></thead><tbody><tr><td>number</td><td>4434</td><td></td><td>number</td><td></td></tr></tbody></table><h4 id="设置物业费预警到期时间-共0个示例"><a href="#设置物业费预警到期时间-共0个示例" class="headerlink" title="设置物业费预警到期时间(共0个示例)"></a>设置物业费预警到期时间(共0个示例)</h4><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> iot-beta </category>
+          
+          <category> rrrrr </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>水电费 缴费</title>
+      <link href="/docs/api/agent/v1/service/payment/set_in_fee/"/>
+      <url>/docs/api/agent/v1/service/payment/set_in_fee/</url>
+      
+        <content type="html"><![CDATA[<h3 id="请求URI"><a href="#请求URI" class="headerlink" title="请求URI:"></a>请求URI:</h3><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">newiot.test/api/agent/v1/service/payment/set_in_fee</span></span><br></pre></td></tr></table></figure><h3 id="Header参数："><a href="#Header参数：" class="headerlink" title="Header参数："></a>Header参数：</h3><h3 id="请求参数：【formdata】"><a href="#请求参数：【formdata】" class="headerlink" title="请求参数：【formdata】"></a>请求参数：【formdata】</h3><table><thead><tr><th>参数名</th><th>示例值</th><th>描述</th><th>类型</th><th>是否必须</th></tr></thead><tbody><tr><td>otherfee_type_id</td><td>13</td><td></td><td>number</td><td></td></tr><tr><td>gate_number</td><td>1011</td><td></td><td>number</td><td></td></tr><tr><td>building_id</td><td>102</td><td></td><td>number</td><td></td></tr><tr><td>type</td><td>1</td><td>登录类型</td><td>number</td><td></td></tr><tr><td>pay_receive</td><td>222.77</td><td></td><td>number</td><td></td></tr><tr><td>pay_true</td><td>222</td><td></td><td>number</td><td></td></tr></tbody></table><h4 id="水电费-缴费-共0个示例"><a href="#水电费-缴费-共0个示例" class="headerlink" title="水电费 缴费(共0个示例)"></a>水电费 缴费(共0个示例)</h4><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> iot-beta </category>
+          
+          <category> rrrrr </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>更新物业费到期时间</title>
+      <link href="/docs/api/agent/v1/service/payment/update/"/>
+      <url>/docs/api/agent/v1/service/payment/update/</url>
+      
+        <content type="html"><![CDATA[<h3 id="请求URI"><a href="#请求URI" class="headerlink" title="请求URI:"></a>请求URI:</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">newiot.test/api/agent/v1/service/payment/update?id=183&amp;property_unit=12&amp;property_endtime=2020-12-16</span><br></pre></td></tr></table></figure><h3 id="Header参数："><a href="#Header参数：" class="headerlink" title="Header参数："></a>Header参数：</h3><table><thead><tr><th>参数名</th><th>值</th></tr></thead><tbody><tr><td>authorization</td><td>Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3….</td></tr></tbody></table><h3 id="请求参数：【formdata】"><a href="#请求参数：【formdata】" class="headerlink" title="请求参数：【formdata】"></a>请求参数：【formdata】</h3><table><thead><tr><th>参数名</th><th>示例值</th><th>描述</th><th>类型</th><th>是否必须</th></tr></thead><tbody><tr><td>username</td><td>admin</td><td></td><td>string</td><td></td></tr><tr><td>password</td><td>123456</td><td>密码</td><td>number</td><td></td></tr></tbody></table><h4 id="更新物业费到期时间-共0个示例"><a href="#更新物业费到期时间-共0个示例" class="headerlink" title="更新物业费到期时间(共0个示例)"></a>更新物业费到期时间(共0个示例)</h4><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> iot-beta </category>
+          
+          <category> rrrrr </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>事例</title>
+      <link href="/docs/api/example/"/>
+      <url>/docs/api/example/</url>
+      
+        <content type="html"><![CDATA[<h3 id="请求URI"><a href="#请求URI" class="headerlink" title="请求URI:"></a>请求URI:</h3><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">http://newiot.test/api/front/v2/login/post</span></span><br></pre></td></tr></table></figure><blockquote><p>Description:事例获取社区下所有楼栋</p></blockquote><h3 id="Header参数："><a href="#Header参数：" class="headerlink" title="Header参数："></a>Header参数：</h3><table><thead><tr><th>参数名</th><th>值</th></tr></thead><tbody><tr><td></td><td>Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3….</td></tr></tbody></table><h3 id="请求参数：【formdata】"><a href="#请求参数：【formdata】" class="headerlink" title="请求参数：【formdata】"></a>请求参数：【formdata】</h3><table><thead><tr><th>参数名</th><th>示例值</th><th>描述</th><th>类型</th><th>是否必须</th></tr></thead><tbody><tr><td>version</td><td>v1</td><td></td><td>string</td><td></td></tr><tr><td>method</td><td>signUp.admin.login</td><td></td><td>string</td><td></td></tr><tr><td>username</td><td>admin</td><td></td><td>string</td><td></td></tr><tr><td>password</td><td>123456</td><td>密码</td><td>number</td><td></td></tr><tr><td>platform</td><td>ios3443</td><td></td><td>string</td><td></td></tr><tr><td>format</td><td>json</td><td></td><td>string</td><td></td></tr><tr><td>community_building_id</td><td>17</td><td></td><td>number</td><td></td></tr><tr><td>building_id</td><td>89</td><td></td><td>number</td><td></td></tr><tr><td>gate_number</td><td>2</td><td></td><td>number</td><td></td></tr><tr><td>id</td><td>49</td><td></td><td>number</td><td></td></tr><tr><td>size</td><td>2</td><td></td><td>number</td><td></td></tr><tr><td>phone</td><td>13983854512</td><td></td><td>string</td><td></td></tr><tr><td>api_token</td><td>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIiL….</td><td>身份认证token</td><td>string</td><td></td></tr><tr><td>password</td><td>123456</td><td>密码</td><td>number</td><td></td></tr><tr><td>ids</td><td>12</td><td></td><td>number</td><td></td></tr></tbody></table><h4 id="获取社区下所有楼栋-共1个示例"><a href="#获取社区下所有楼栋-共1个示例" class="headerlink" title="获取社区下所有楼栋(共1个示例)"></a>获取社区下所有楼栋(共1个示例)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;code&quot;: 200,</span><br><span class="line">    &quot;msg&quot;: &quot;&quot;,</span><br><span class="line">    &quot;data&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;id&quot;: 89,</span><br><span class="line">            &quot;name&quot;: &quot;A栋&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;id&quot;: 90,</span><br><span class="line">            &quot;name&quot;: &quot;B栋&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;id&quot;: 91,</span><br><span class="line">            &quot;name&quot;: &quot;C栋&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;id&quot;: 101,</span><br><span class="line">            &quot;name&quot;: &quot;F栋&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;id&quot;: 102,</span><br><span class="line">            &quot;name&quot;: &quot;Z栋&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> system </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> system </tag>
+            
+            <tag> apiDocs </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>

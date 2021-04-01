@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ef85913c82f26c264aab6f6b48d12d3a",
+    "content-hash": "6b1b0ba9db0413514622f28338b5b4ae",
     "packages": [
         {
             "name": "andphp/docs",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/andphp/apidocs.git",
-                "reference": "5e3ef63f6130f61536d44cdd313e67c2dd1c484b"
+                "reference": "84c462d180046cfab12375eacd22c30a8eab45df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/andphp/apidocs/zipball/5e3ef63f6130f61536d44cdd313e67c2dd1c484b",
-                "reference": "5e3ef63f6130f61536d44cdd313e67c2dd1c484b",
+                "url": "https://api.github.com/repos/andphp/apidocs/zipball/84c462d180046cfab12375eacd22c30a8eab45df",
+                "reference": "84c462d180046cfab12375eacd22c30a8eab45df",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -58,7 +58,163 @@
                 "issues": "https://github.com/andphp/apidocs/issues",
                 "source": "https://github.com/andphp/apidocs/tree/master"
             },
-            "time": "2021-03-23T10:06:29+00:00"
+            "time": "2021-03-28T14:19:20+00:00"
+        },
+        {
+            "name": "andphp/laravel-constant",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/andphp/laravel-constant.git",
+                "reference": "b894d85d61a7b0563b6b36c053a795236991d2cc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/andphp/laravel-constant/zipball/b894d85d61a7b0563b6b36c053a795236991d2cc",
+                "reference": "b894d85d61a7b0563b6b36c053a795236991d2cc",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "laravel/framework": "^8.12"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AndPHP\\Constant\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Da Xiong",
+                    "email": "10000@andphp.com"
+                }
+            ],
+            "description": "dev",
+            "support": {
+                "issues": "https://github.com/andphp/laravel-constant/issues",
+                "source": "https://github.com/andphp/laravel-constant/tree/master"
+            },
+            "time": "2021-03-31T16:19:39+00:00"
+        },
+        {
+            "name": "andphp/laravel-output",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/andphp/laravel-output.git",
+                "reference": "5fe99753c61a9fab331ab8a36092f00e7689ee48"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/andphp/laravel-output/zipball/5fe99753c61a9fab331ab8a36092f00e7689ee48",
+                "reference": "5fe99753c61a9fab331ab8a36092f00e7689ee48",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "andphp/postman_to_markdown": "dev-master",
+                "laravel/framework": "^8.12"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "\\AndPHP\\OutPut\\OutPutServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "AndPHP\\OutPut\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Da Xiong",
+                    "email": "10000@andphp.com"
+                }
+            ],
+            "description": "dev",
+            "support": {
+                "issues": "https://github.com/andphp/laravel-output/issues",
+                "source": "https://github.com/andphp/laravel-output/tree/master"
+            },
+            "time": "2021-03-31T19:37:44+00:00"
+        },
+        {
+            "name": "andphp/postman_to_markdown",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/andphp/postman_to_markdown.git",
+                "reference": "8c7d44818c2098b9d943ff754f7bad42c9f0e8e0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/andphp/postman_to_markdown/zipball/8c7d44818c2098b9d943ff754f7bad42c9f0e8e0",
+                "reference": "8c7d44818c2098b9d943ff754f7bad42c9f0e8e0",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "laravel/framework": "^8.12"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "\\AndPHP\\Postman\\PostmanToMarkdownServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "AndPHP\\Postman\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Da Xiong",
+                    "email": "10000@andphp.com"
+                }
+            ],
+            "description": "dev",
+            "support": {
+                "issues": "https://github.com/andphp/postman_to_markdown/issues",
+                "source": "https://github.com/andphp/postman_to_markdown/tree/master"
+            },
+            "time": "2021-03-30T03:39:42+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -8276,7 +8432,10 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "andphp/docs": 20
+        "andphp/docs": 20,
+        "andphp/laravel-constant": 20,
+        "andphp/laravel-output": 20,
+        "andphp/postman_to_markdown": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

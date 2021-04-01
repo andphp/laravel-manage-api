@@ -10,6 +10,9 @@
     "require": {
         "php": "^7.3|^8.0",
         "andphp/docs": "dev-master",
+        "andphp/laravel-constant": "dev-master",
+        "andphp/laravel-output": "dev-master",
+        "andphp/postman_to_markdown": "dev-master",
         "fideloper/proxy": "^4.4",
         "firebase/php-jwt": "^5.2",
         "fruitcake/laravel-cors": "^2.0",

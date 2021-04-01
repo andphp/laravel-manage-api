@@ -3,83 +3,102 @@
 
 namespace App\Constant;
 
+use AndPHP\Constant\Constant;
+
 
 /**
- * cd
  * Class Error
  * @package App\Constant
  */
-class Error extends BaseConstant
+class Error extends Constant
 {
 
     public function __init()
     {
         $this->class = __CLASS__;
+
     }
 
-    /**
-     * token登录失效
-     */
-    const INVALID_TOKEN = 401;
+
+    // =============================== 系统默认错误码 ====================
+
+    // 授权／令牌请求接口返回码
 
     /**
-     * 没有权限
+     * 请求成功
      */
-    const INVALID_AUTH = 403;
+    const SUCCESS = 0;
 
     /**
-     * 执行失败，请稍后再试！
+     * 未知错误
      */
-    const RESPONSE_FAILED = 999;
+    const UNKNOWN_ERROR = 9999;
 
     /**
-     * 用户 不存在
+     * 非法的请求参数
      */
-    const NOT_USER_EXISTS = 10001;
+    const INVALID_PARAMS = 10000;
 
     /**
-     * 手机号 已存在
+     * 用户认证失败
      */
-    const PHONE_ALREADY_EXISTS = 10002;
+    const INVALID_CLIENT = 10001;
 
     /**
-     * 验证码 发送失败
+     * 非法的授权信息
      */
-    const VERIFICATION_CODE_SENDING_FAILED = 10003;
+    const INVALID_GRANT = 10002;
 
     /**
-     * 验证码 无效
+     * scope信息无效或超出范围
      */
-    const VERIFICATION_CODE_INVALID = 10004;
+    const INVALID_SCOPE = 10003;
 
     /**
-     * 您的验证码已过期请重新发送
+     * 令牌已过期
      */
-    const VERIFICATION_CODE_EXPIRED = 10005;
+    const EXPIRED_TOKEN = 10004;
 
     /**
-     * 您的验证码输入有误请重新输入
+     * 没有权限,拒绝访问
      */
-    const VERIFICATION_CODE_ERROR = 10006;
+    const ACCESS_DENIED = 10005;
+
+
+    // =============================== 业务错误码 ========================
 
     /**
-     * 密码错误
+     * 应用标识+功能域+错误类型+错误编码
+     * 错误码位数：8位
+     * 错误码示例：I102P001
+     * 使用规范：只增不改，避免混乱
+     *
+     * 应用标识(2位字母和数字)
+     * AXXX平台：A1
+     * AXXX平台：A2
+     * VXXX平台：V1
+     * ZXXX平台：Z1
+     *
+     * 功能域(2位数字)
+     * 未分类：00
+     * X1相关：01
+     * X2相关：02
+     * X3相关：03
+     *
+     * 错误类型(1位字母)
+     * 参数错误：P
+     * 业务错误：B
+     * 系统错误：S
+     * 网络错误：N
+     * 数据库错误：D
+     * 缓存错误：C
+     * RPC错误：R
+     * 文件IO错误：F
+     * 其他错误：O
+     *
+     * 错误编码(3位数字)
+     * 自增即可
      */
-    const PASSWORD_ERROR = 10007;
-
-    /**
-     * 审核信息不能为空
-     */
-    const APPROVAL_MSG_NOT_NULL = 10008;
-
-    /**
-     * 状态值越界
-     */
-    const TASK_STATUS_ERROR = 20001;
 
 
-    /**
-     * 数据不能为空
-     */
-    const DATA_ERROR = 30001;
 }
