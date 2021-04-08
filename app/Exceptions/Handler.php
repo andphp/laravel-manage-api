@@ -40,17 +40,21 @@ class Handler extends ExceptionHandler
 
     public function render ($request, Throwable $exception)
     {
-        // 将方法拦截到自己的ExceptionReport
-        $reporter = Report::make($exception);
-        if ($reporter->shouldReturn()) {
-            return $reporter->report();
+        if($request->is("api/*")){
+            // 将方法拦截到自己的ExceptionReport
+            $reporter = Report::make($exception);
+            if ($reporter->shouldReturn()) {
+                return $reporter->report();
+            }
+            if (config('app.debug')) {
+                //开发环境，则显示详细错误信息
+                return parent::render($request, $exception);
+            } else {
+                //线上环境,未知错误，则显示500
+                return $reporter->prodReport();
+            }
         }
-        if (config('app.debug')) {
-            //开发环境，则显示详细错误信息
-            return parent::render($request, $exception);
-        } else {
-            //线上环境,未知错误，则显示500
-            return $reporter->prodReport();
-        }
+        return parent::render($request, $exception);
+
     }
 }

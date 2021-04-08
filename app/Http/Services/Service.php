@@ -4,21 +4,28 @@
 namespace App\Http\Services;
 
 
-use App\Traits\OutPut;
+use App\Constant\Error;
+use App\Exceptions\ApiException;
 
 class Service
 {
 
-
-    public function error(int $code = 999, string $message = null, $data = null)
+    public function error($error)
     {
-        return [
-            'data' => $data,
-            'err'  => [
-                'code' => $code,
-                'msg'  => $message,
-            ],
-        ];
+        $data = array();
+        if (is_numeric($error)) {
+            $data['code'] = $error;
+            $data['msg'] = ((new Error())->getMessage($error)) ?? 'Service unknown error';
+        }
+
+        if (is_string($error)) {
+            $data['msg'] = $error;
+        }
+        if (is_array($error)) {
+            $data = $error;
+        }
+
+        throw new ApiException($data);
     }
 
 }

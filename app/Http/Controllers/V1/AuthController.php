@@ -14,7 +14,7 @@ use function MongoDB\BSON\toJSON;
 class AuthController extends Controller
 {
 
-    /**
+    /**g
      * 登录
      * @param Request $request
      */
@@ -23,19 +23,23 @@ class AuthController extends Controller
 
         // 参数验证
         $validatedData = $request->validate([
-            'account'   => ['required', new AccountIsEmailOrPhone()],
-            'password' => ['required', "between:6,18"],
-        ],[],[
+            'account' => [
+                'required',
+                new AccountIsEmailOrPhone()
+            ],
+            'password' => [
+                'required',
+                "between:6,18"
+            ],
+        ], [], [
             'account' => '登录账号'
         ]);
         // 登录
-        [$res,$err]= AuthService::login($validatedData);
-        if($err){
-            return $this->error($err);
-        }
+        $token = AuthService::login($validatedData);
 
-        return new SysUserInfo($res);
+        return $this->success(['token' => $token]);
     }
+
     /**
      * Display a listing of the resource.
      */

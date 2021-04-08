@@ -25,8 +25,8 @@ class CreateSysOperationRecordsTable extends Migration
             $table->integer('latency')->default(0)->comment("延迟");
             $table->string('agent')->default("")->comment("代理");
             $table->string('error_message')->default("")->comment("错误信息");
-            $table->longText('body')->default("")->comment("请求Body");
-            $table->longText('resp')->default("")->comment("响应Body");
+            $table->longText('request_body')->nullable()->comment("请求Body");
+            $table->longText('response_body')->nullable()->comment("响应Body");
             $table->bigInteger('user_id')->default(0)->comment("用户ID");
             $table->timestamps();
             $table->timestamp('deleted_at', 0)->nullable()->comment('删除时间 null未删除');

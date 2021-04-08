@@ -29,10 +29,11 @@ class CreateSysUsersTable extends Migration
             $table->string('avatar')->default("")->comment("头像");
             $table->bigInteger('role_id')->default(1)->comment("角色ID");
             $table->timestamp('last_login_at',0)->nullable()->comment('最后登录日期');
+            $table->string('last_token',1000)->default('')->comment('最新登录token');
             $table->string('last_ip')->default('')->comment('最后登录IP');
             $table->boolean('status')->default(true)->comment('状态: 1=启用 0=禁用');
             $table->timestamps();
-            $table->timestamp('deleted_at', 0)->nullable()->comment('删除时间 null未删除');
+            $table->timestamp('deleted_at', 0)->nullable()->default(null)->comment('删除时间 null未删除');
             $table->index('uuid');
             $table->index('email');
             $table->index('username');

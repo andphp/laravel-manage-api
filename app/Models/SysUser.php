@@ -5,6 +5,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use DateTimeInterface;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * Class SysUser
@@ -27,9 +32,10 @@ use Illuminate\Support\Str;
  * @property datetime updated_at
  * @property datetime deleted_at	删除时间 null未删除
  */
-class SysUser extends Model
+class SysUser extends Authenticatable implements JWTSubject
 {
-    use SoftDeletes;
+    use HasFactory, Notifiable,SoftDeletes;
+
     protected $table = 'sys_users';
 
     protected $fillable = [
@@ -44,6 +50,7 @@ class SysUser extends Model
         'avatar',
         'role_id',
         'last_login_at',
+        'last_token',
         'last_ip',
         'status',
         'created_at',
@@ -62,5 +69,24 @@ class SysUser extends Model
     public function getUserInfo($id)
     {
         return self::find($id);
+    }
+
+    //实现 JWTSubject接口  两个函数
+    public function getJWTIdentifier(){
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims(){
+        return [];
+    }
+
+    /**
+     * Prepare a date for array / JSON serialization.
+     * @param DateTimeInterface $date
+     * @return string
+     */
+    protected function serializeDate(DateTimeInterface $date)
+    {
+        return $date->format($this->dateFormat ?: 'Y-m-d H:i:s');
     }
 }

@@ -13,8 +13,6 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        \AndPHP\ApiDocs\ApiDocsCommand::class,
-        \AndPHP\Postman\PostmanToMarkdownCommand::class
     ];
 
     /**

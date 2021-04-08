@@ -14,16 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/test', [\App\Http\Controllers\TestController::class,'index']);
-Route::group([
-    'namespace' => 'V1',
-    'prefix' => 'v1/',
-], function () {
+Route::namespace('V1')->prefix('v1/')->middleware('cors')->group( function () {
     Route::post('sign_in', [\App\Http\Controllers\V1\AuthController::class,'signIn']); // 提交登录
 
     /**
      * 登录验证路由:
      */
-    Route::group(['middleware' => App\Http\Middleware\Authenticate::class], function () {
+    Route::middleware('auth:admin')->group( function () {
         /**
          * |--------------------------------------------------------------------------
          * | 角色 相关的路由
