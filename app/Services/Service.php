@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Http\Services;
+namespace App\Services;
 
 
 use App\Constant\Error;
@@ -9,6 +9,7 @@ use App\Exceptions\ApiException;
 
 class Service
 {
+
 
     public function error($error)
     {

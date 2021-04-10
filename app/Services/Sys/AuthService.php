@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Services;
+namespace App\Services\Sys;
 
 
 use App\Constant\Error;
-use App\Librarys\Jwt\Token;
+use App\Repositories\Sys\Interfaces\DepartmentRepositoryInterface;
+use App\Repositories\Sys\Interfaces\UserRepositoryInterface;
+use App\Services\Service;
 use App\Models\SysUser;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Exceptions\TokenExpiredException;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -34,7 +35,8 @@ class AuthService extends Service
 
     /**
      * @param $validatedData
-     * @return array|string
+     * @return string
+     * @throws \App\Exceptions\ApiException
      */
     private function login($validatedData)
     {
@@ -66,9 +68,12 @@ class AuthService extends Service
         if (!Hash::check($password, $user->password)) {
             $this->error(Error::PASSWORD_ERROR);
         }
+        $login = [
+            'phone' => $validatedData['account'],
+            'password' => $validatedData['password'],
+        ];
 
-
-        $token = Auth::guard('admin')->fromUser($user);
+        $token = Auth::guard('admin')->attempt($login);
         if ($token) {
             if ($user->last_token) {
                 try {
@@ -79,7 +84,7 @@ class AuthService extends Service
             }
             $user->last_token = $token;
             $user->save();
-            return 'bearer ' . $token;
+            return $token;
         }
         $this->error('账号或密码错误');
     }
@@ -95,5 +100,16 @@ class AuthService extends Service
             'password' => Hash::make($password),
             'username' => substr((string)($account), -4, 4) . randomStr(6),
         ]);
+    }
+
+    private function getUserInfo()
+    {
+        $user = Auth::guard('admin')->user();
+
+        $DepartmentRoles = app(DepartmentRepositoryInterface::class)->getDepartmentRolesByUser($user);
+        $userRoles = app(UserRepositoryInterface::class)->getUserRolesByUser($user);
+        //合并去重
+        $roleIDs = array_keys(array_flip($DepartmentRoles) + array_flip($userRoles));
+        dd();//
     }
 }

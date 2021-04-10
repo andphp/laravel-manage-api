@@ -24,7 +24,6 @@ use Illuminate\Notifications\Notifiable;
  * @property string realname	实名
  * @property string password	密码
  * @property string avatar	头像
- * @property int role_id	角色ID
  * @property datetime last_login_at	最后登录日期
  * @property string last_ip	最后登录IP
  * @property int status	状态: 1=启用 0=禁用
@@ -35,7 +34,6 @@ use Illuminate\Notifications\Notifiable;
 class SysUser extends Authenticatable implements JWTSubject
 {
     use HasFactory, Notifiable,SoftDeletes;
-
     protected $table = 'sys_users';
 
     protected $fillable = [
@@ -48,7 +46,6 @@ class SysUser extends Authenticatable implements JWTSubject
         'realname',
         'password',
         'avatar',
-        'role_id',
         'last_login_at',
         'last_token',
         'last_ip',
@@ -77,7 +74,7 @@ class SysUser extends Authenticatable implements JWTSubject
     }
 
     public function getJWTCustomClaims(){
-        return [];
+        return ['role' => 'admin'];
     }
 
     /**
@@ -88,5 +85,9 @@ class SysUser extends Authenticatable implements JWTSubject
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format($this->dateFormat ?: 'Y-m-d H:i:s');
+    }
+
+    public function roles(){
+       return $this->belongsToMany('App\Models\SysRole','sys_user_roles','user_id', 'role_id');
     }
 }

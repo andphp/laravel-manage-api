@@ -178,6 +178,11 @@ return [
 
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
 
+        /*
+         * RepositoryServiceProvider
+         */
+        App\Providers\RepositoryServiceProvider::class,
+
     ],
 
     /*
@@ -229,6 +234,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth',
+        'JWTFactory' => 'Tymon\JWTAuth\Facades\JWTFactory',
 
     ],
     'secret' => env('SECRET','Jl7j7tUs7c508mUJtoYbIttgPItYqKNAPJGCMr2l29QnHtLizcuKiYarLnjkCiaM'),

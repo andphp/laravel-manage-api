@@ -19,7 +19,7 @@ class CreateSysRolesTable extends Migration
             $table->collation = 'utf8mb4_unicode_ci';
             $table->id();
             $table->string('role_name')->default("")->comment("角色名");
-            $table->string('parent_id')->default(0)->comment("父角色ID");
+            $table->string('parent_id')->default(0)->comment("父角色ID（父级包含子级角色权限）");
             $table->string('default_router')->default("dashboard")->comment("默认菜单");
             $table->timestamps();
             $table->index('role_name');

@@ -27,7 +27,6 @@ class CreateSysUsersTable extends Migration
             $table->string('realname')->default("")->comment("实名");
             $table->string('password')->default("")->comment("密码");
             $table->string('avatar')->default("")->comment("头像");
-            $table->bigInteger('role_id')->default(1)->comment("角色ID");
             $table->timestamp('last_login_at',0)->nullable()->comment('最后登录日期');
             $table->string('last_token',1000)->default('')->comment('最新登录token');
             $table->string('last_ip')->default('')->comment('最后登录IP');

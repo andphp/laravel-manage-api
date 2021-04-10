@@ -4,8 +4,110 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f8a6a015825b9360aba2f0070fb03429",
+    "content-hash": "c92bd481e28038bc6482524bd44c394c",
     "packages": [
+        {
+            "name": "andphp/laravel-constant",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/andphp/laravel-constant.git",
+                "reference": "8fa08441c40871b5f860921fa773d663b5faf061"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/andphp/laravel-constant/zipball/8fa08441c40871b5f860921fa773d663b5faf061",
+                "reference": "8fa08441c40871b5f860921fa773d663b5faf061",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "laravel/framework": "^8.12"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AndPHP\\Constant\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Da Xiong",
+                    "email": "10000@andphp.com"
+                }
+            ],
+            "description": "dev",
+            "support": {
+                "issues": "https://github.com/andphp/laravel-constant/issues",
+                "source": "https://github.com/andphp/laravel-constant/tree/master"
+            },
+            "time": "2021-04-03T06:21:17+00:00"
+        },
+        {
+            "name": "andphp/laravel-output",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/andphp/laravel-output.git",
+                "reference": "e295928b59968037fde585fc146f5d32d276dd5e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/andphp/laravel-output/zipball/e295928b59968037fde585fc146f5d32d276dd5e",
+                "reference": "e295928b59968037fde585fc146f5d32d276dd5e",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "andphp/laravel-constant": "dev-master",
+                "laravel/framework": "^8.12"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "\\AndPHP\\OutPut\\OutPutServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "AndPHP\\OutPut\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Da Xiong",
+                    "email": "10000@andphp.com"
+                }
+            ],
+            "description": "dev",
+            "support": {
+                "issues": "https://github.com/andphp/laravel-output/issues",
+                "source": "https://github.com/andphp/laravel-output/tree/master"
+            },
+            "time": "2021-04-09T15:41:43+00:00"
+        },
         {
             "name": "asm89/stack-cors",
             "version": "v2.0.2",
@@ -5871,108 +5973,6 @@
             "time": "2021-04-08T10:48:50+00:00"
         },
         {
-            "name": "andphp/laravel-constant",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/andphp/laravel-constant.git",
-                "reference": "8fa08441c40871b5f860921fa773d663b5faf061"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/andphp/laravel-constant/zipball/8fa08441c40871b5f860921fa773d663b5faf061",
-                "reference": "8fa08441c40871b5f860921fa773d663b5faf061",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
-            },
-            "require": {
-                "laravel/framework": "^8.12"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "AndPHP\\Constant\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Da Xiong",
-                    "email": "10000@andphp.com"
-                }
-            ],
-            "description": "dev",
-            "support": {
-                "issues": "https://github.com/andphp/laravel-constant/issues",
-                "source": "https://github.com/andphp/laravel-constant/tree/master"
-            },
-            "time": "2021-04-03T06:21:17+00:00"
-        },
-        {
-            "name": "andphp/laravel-output",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/andphp/laravel-output.git",
-                "reference": "7c69912cfdf2342c485097f2254a20c5675b68c5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/andphp/laravel-output/zipball/7c69912cfdf2342c485097f2254a20c5675b68c5",
-                "reference": "7c69912cfdf2342c485097f2254a20c5675b68c5",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
-            },
-            "require": {
-                "andphp/laravel-constant": "dev-master",
-                "laravel/framework": "^8.12"
-            },
-            "default-branch": true,
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "\\AndPHP\\OutPut\\OutPutServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "AndPHP\\OutPut\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Da Xiong",
-                    "email": "10000@andphp.com"
-                }
-            ],
-            "description": "dev",
-            "support": {
-                "issues": "https://github.com/andphp/laravel-output/issues",
-                "source": "https://github.com/andphp/laravel-output/tree/master"
-            },
-            "time": "2021-04-08T02:50:12+00:00"
-        },
-        {
             "name": "doctrine/instantiator",
             "version": "1.4.0",
             "source": {
@@ -8702,8 +8702,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "andphp/laravel-console": 20,
-        "andphp/laravel-output": 20
+        "andphp/laravel-output": 20,
+        "andphp/laravel-console": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

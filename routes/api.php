@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Sys;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,21 +14,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/test', [\App\Http\Controllers\TestController::class,'index']);
-Route::namespace('V1')->prefix('v1/')->middleware('cors')->group( function () {
-    Route::post('sign_in', [\App\Http\Controllers\V1\AuthController::class,'signIn']); // 提交登录
+Route::prefix('sys/')->middleware('cors')->group( function () {
+    Route::post('sign_in', [Sys\AuthController::class, 'signIn']); // 提交登录
+
+    Route::middleware(['jwt.role:admin', 'jwt.auth'])->group(function() {
+        //当前用户信息
+        Route::post('user/info', [Sys\AuthController::class, 'info']);
+        Route::post('reset_password', 'AuthController@resetPassword')->name('auth.reset_password');
+        //用户退出
+        Route::post('sign_out', 'AuthController@signOut')->name('auth.signOut');
+    });
 
     /**
      * 登录验证路由:
      */
-    Route::middleware('auth:admin')->group( function () {
+    Route::middleware('auth.admin')->group( function () {
         /**
          * |--------------------------------------------------------------------------
          * | 角色 相关的路由
          * |--------------------------------------------------------------------------
          */
         Route::group(['prefix' => 'role'], function () {
-            Route::post('list', [\App\Http\Controllers\V1\RoleController::class,'list']); // 获取 角色列表
-            Route::post('create', [\App\Http\Controllers\V1\RoleController::class,'create']); // 创建 角色
+            Route::post('list', [\App\Http\Controllers\Sys\RoleController::class,'list']); // 获取 角色列表
+            Route::post('create', [\App\Http\Controllers\Sys\RoleController::class,'create']); // 创建 角色
         });
     });
 });
