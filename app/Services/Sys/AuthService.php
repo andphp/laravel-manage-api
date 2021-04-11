@@ -4,6 +4,8 @@ namespace App\Services\Sys;
 
 
 use App\Constant\Error;
+use App\Http\Resources\Sys\UserInfoResource;
+use App\Models\SysRole;
 use App\Repositories\Sys\Interfaces\DepartmentRepositoryInterface;
 use App\Repositories\Sys\Interfaces\UserRepositoryInterface;
 use App\Services\Service;
@@ -110,6 +112,7 @@ class AuthService extends Service
         $userRoles = app(UserRepositoryInterface::class)->getUserRolesByUser($user);
         //合并去重
         $roleIDs = array_keys(array_flip($DepartmentRoles) + array_flip($userRoles));
-        dd();//
+        $roleID = SysRole::query()->whereIn('id',$roleIDs)->get('role_name')->toArray();
+        return new UserInfoResource($user,array_column($roleID,'role_name'));
     }
 }

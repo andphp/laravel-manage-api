@@ -54,9 +54,9 @@ class AuthController extends Controller
      */
     public function info(Request $request){
 
-        $user = $request->user('admin');
+        $user = AuthService::getUserInfo();
 
-        return new SysUserInfo($user);
+        return $this->success($user);
     }
 
     /**

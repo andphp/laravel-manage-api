@@ -1,13 +1,23 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Sys;
 
 
+use App\Traits\SuccessResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class SysUserInfo extends JsonResource
+class UserInfoResource extends JsonResource
 {
 
+    use SuccessResource;
+
+    protected $roleIDs;
+
+    public function __construct($resource,$roleIDs)
+    {
+        parent::__construct($resource);
+        $this->roleIDs = $roleIDs;
+    }
 
     /**
      * Transform the resource into an array.
@@ -21,13 +31,10 @@ class SysUserInfo extends JsonResource
                 'uuid'              => $this->uuid,
                 'email'             => $this->email,
                 'phone'             => $this->phone,
-                'email_verified_at' => $this->email_verified_at,
                 'username'          => $this->username,
                 'nickname'          => $this->nickname,
-                'realname'          => $this->realname,
-                'password'          => $this->password,
                 'avatar'            => $this->avatar,
-                'role_id'           => 444
+                'role_id'           => $this->roleIDs
             ];
     }
 
