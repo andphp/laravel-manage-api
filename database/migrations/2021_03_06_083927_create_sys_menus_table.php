@@ -28,6 +28,7 @@ class CreateSysMenusTable extends Migration
             $table->boolean('keep_alive')->default(true)->comment("附加属性:当前路由是否缓存（默认值：true）");
             $table->boolean('default_menu')->default(false)->comment("附加属性:");
             $table->string('title')->default("")->comment("附加属性:标题");
+            $table->string('description')->default("")->comment("附加属性:菜单描述");
             $table->string('icon')->default("")->comment("附加属性:icon");
             $table->boolean('close_tab')->default(false)->comment("附加属性:是否隐藏关闭按钮");
             $table->boolean('hidden_tab')->default(false)->comment("附加属性:是否不显示多标签页");

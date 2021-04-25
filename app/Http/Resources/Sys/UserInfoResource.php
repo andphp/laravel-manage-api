@@ -13,7 +13,7 @@ class UserInfoResource extends JsonResource
 
     protected $roleIDs;
 
-    public function __construct($resource,$roleIDs)
+    public function __construct($resource, $roleIDs)
     {
         parent::__construct($resource);
         $this->roleIDs = $roleIDs;
@@ -28,14 +28,15 @@ class UserInfoResource extends JsonResource
     public function toArray($request)
     {
         return [
-                'uuid'              => $this->uuid,
-                'email'             => $this->email,
-                'phone'             => $this->phone,
-                'username'          => $this->username,
-                'nickname'          => $this->nickname,
-                'avatar'            => $this->avatar,
-                'role_id'           => $this->roleIDs
-            ];
+            'id'       => $this->id,
+            'uuid'     => $this->uuid,
+            'email'    => $this->email,
+            'phone'    => $this->phone,
+            'username' => $this->username,
+            'nickname' => $this->nickname,
+            'avatar'   => $this->avatar,
+            'roles'    => $this->roleIDs
+        ];
     }
 
 }

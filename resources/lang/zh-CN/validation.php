@@ -176,5 +176,9 @@ return [
         'available'             => '可用的',
         'size'                  => '大小',
     ],
-    'email_or_phone' => ':attribute 必须是手机号码或电子邮箱地址',
+    'account' => [
+        'phone' => ':attribute 必须是手机号码',
+        'email' => ':attribute 必须是电子邮箱地址',
+        'username' => ':attribute 必须是字母或数字',
+    ],
 ];

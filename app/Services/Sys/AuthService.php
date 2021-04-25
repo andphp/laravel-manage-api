@@ -57,6 +57,12 @@ class AuthService extends Service
                 $account,
                 'or'
             ],
+            [
+                'username',
+                '=',
+                $account,
+                'or'
+            ],
         ];
 
         // 验证用户
@@ -71,7 +77,7 @@ class AuthService extends Service
             $this->error(Error::PASSWORD_ERROR);
         }
         $login = [
-            'phone' => $validatedData['account'],
+            'phone'    => $user->phone,
             'password' => $validatedData['password'],
         ];
 
@@ -97,8 +103,8 @@ class AuthService extends Service
         $password = $validatedData['password'];
 
         SysUser::query()->create([
-            'phone' => 13983854512,
-            'email' => "139838545122qq.com",
+            'phone'    => 13983854512,
+            'email'    => "139838545122qq.com",
             'password' => Hash::make($password),
             'username' => substr((string)($account), -4, 4) . randomStr(6),
         ]);
@@ -112,7 +118,7 @@ class AuthService extends Service
         $userRoles = app(UserRepositoryInterface::class)->getUserRolesByUser($user);
         //合并去重
         $roleIDs = array_keys(array_flip($DepartmentRoles) + array_flip($userRoles));
-        $roleID = SysRole::query()->whereIn('id',$roleIDs)->get('role_name')->toArray();
-        return new UserInfoResource($user,array_column($roleID,'role_name'));
+
+        return new UserInfoResource($user, $roleIDs);
     }
 }

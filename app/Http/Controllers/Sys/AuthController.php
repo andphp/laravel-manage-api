@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Sys;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\SysUserInfo;
 use App\Services\Sys\AuthService;
-use App\Rules\AccountIsEmailOrPhone;
+use App\Rules\AccountRules;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,7 +27,7 @@ class AuthController extends Controller
         $validatedData = $request->validate([
             'account' => [
                 'required',
-                new AccountIsEmailOrPhone()
+                new AccountRules()
             ],
             'password' => [
                 'required',
